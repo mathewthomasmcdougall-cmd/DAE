@@ -225,79 +225,40 @@ img {
   padding: 58px 20px 24px;
   overflow: hidden;
   border-radius: 4px;
-  /* Layer 1: static high-contrast base gradient. */
   background:
-    radial-gradient(110% 92% at 70% 42%, rgba(31, 38, 170, 0.5), transparent 60%),
-    radial-gradient(82% 70% at 24% 64%, rgba(0, 103, 244, 0.26), transparent 64%),
-    radial-gradient(132% 124% at 51% -16%, #02020d 0%, #0c0e4b 54%, #1732a0 100%);
+    radial-gradient(110% 92% at 72% 42%, rgba(31, 38, 170, 0.48), transparent 62%),
+    radial-gradient(132% 124% at 51% -16%, #02020d 0%, #0c0e4b 55%, #1732a0 100%);
   color: var(--white);
   isolation: isolate;
 }
 
-.hero::before {
-  position: absolute;
-  top: 6%;
-  left: -20%;
-  z-index: 2;
-  width: 152%;
-  height: 86%;
-  content: "";
-  border-radius: 44% 56% 48% 52% / 46% 52% 48% 54%;
-  /* Layer 2a: broad atmospheric fog drifting diagonally behind the content. */
-  background:
-    radial-gradient(ellipse at 22% 56%, rgba(10, 14, 78, 0.72), transparent 56%),
-    radial-gradient(ellipse at 68% 40%, rgba(118, 185, 252, 0.28), rgba(31, 38, 170, 0.2) 40%, transparent 64%),
-    radial-gradient(ellipse at 48% 78%, rgba(2, 2, 13, 0.46), transparent 58%);
-  filter: blur(44px) saturate(1.18);
-  mix-blend-mode: screen;
-  opacity: 0.68;
-  background-size: 118% 118%, 112% 112%, 108% 108%;
-  background-position: 0% 50%, 55% 45%, 48% 80%;
-  pointer-events: none;
-  transform-origin: 36% 56%;
-  will-change: transform, opacity;
-  animation: atmosphericFog 34s ease-in-out infinite alternate;
-}
-
-.hero::after {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  content: "";
-  pointer-events: none;
-  /* Layer 3: restrained moving beams plus a vignette for contrast and focus. */
-  background:
-    linear-gradient(111deg, transparent 16%, rgba(118, 185, 252, 0.09) 40%, transparent 61%),
-    linear-gradient(166deg, transparent 24%, rgba(92, 247, 187, 0.045) 52%, transparent 74%),
-    radial-gradient(94% 108% at 50% 50%, transparent 34%, rgba(2, 2, 13, 0.7) 100%),
-    linear-gradient(180deg, rgba(2, 2, 13, 0.34), transparent 31%, rgba(2, 2, 13, 0.5));
-  will-change: transform, opacity;
-  animation: beamDrift 40s ease-in-out infinite alternate;
-  background-size: 130% 130%, 120% 120%, 100% 100%, 100% 100%;
-  background-position: 0% 50%, 100% 45%, 50% 50%, 50% 50%;
-}
-
 .liquid-hero-background {
   position: absolute;
-  top: 10%;
-  left: -30%;
-  z-index: 2;
-  width: 158%;
-  height: 76%;
-  border-radius: 44% 56% 48% 52% / 42% 58% 44% 56%;
-  opacity: 0.7;
-  mix-blend-mode: screen;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
   pointer-events: none;
-  /* Layer 2b: liquid light band with slow lateral wave movement. */
   background:
-    radial-gradient(ellipse at 26% 54%, transparent 0 30%, rgba(255, 255, 255, 0.28) 39%, rgba(118, 185, 252, 0.48) 49%, rgba(31, 38, 170, 0.28) 61%, transparent 74%),
-    linear-gradient(118deg, transparent 12%, rgba(255, 255, 255, 0.14) 43%, transparent 78%);
-  filter: blur(28px) saturate(1.24);
-  background-size: 122% 118%, 118% 118%;
-  background-position: 15% 54%, 42% 50%;
-  transform-origin: 36% 54%;
-  will-change: transform, opacity;
-  animation: liquidLightBand 30s ease-in-out infinite alternate;
+    radial-gradient(105% 82% at 70% 40%, rgba(31, 38, 170, 0.42), transparent 62%),
+    radial-gradient(88% 72% at 24% 62%, rgba(0, 103, 244, 0.2), transparent 66%),
+    #02020d;
+}
+
+.liquid-hero-background canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.94;
+}
+
+.liquid-hero-background::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(90% 104% at 50% 48%, transparent 32%, rgba(2, 2, 13, 0.74) 100%),
+    linear-gradient(180deg, rgba(2, 2, 13, 0.34), transparent 30%, rgba(2, 2, 13, 0.54));
+  pointer-events: none;
 }
 
 .hero-spacer {
@@ -1392,60 +1353,6 @@ details p {
   }
 }
 
-@keyframes liquidLightBand {
-  0% {
-    transform: translate3d(-8%, 4%, 0) rotate(3deg) scale(1.02);
-    background-position: 15% 54%, 42% 50%;
-    opacity: 0.48;
-  }
-  38% {
-    transform: translate3d(5%, -4%, 0) rotate(9deg) scale(1.11);
-    background-position: 56% 46%, 64% 52%;
-    opacity: 0.68;
-  }
-  68% {
-    transform: translate3d(9%, 2%, 0) rotate(2deg) scale(1.08);
-    background-position: 78% 58%, 70% 46%;
-    opacity: 0.58;
-  }
-  100% {
-    transform: translate3d(12%, 5%, 0) rotate(-1deg) scale(1.07);
-    background-position: 92% 48%, 86% 54%;
-    opacity: 0.56;
-  }
-}
-
-@keyframes atmosphericFog {
-  0% {
-    transform: translate3d(5%, -3%, 0) rotate(5deg) scale(1.02);
-    background-position: 0% 50%, 55% 45%, 48% 80%;
-    opacity: 0.54;
-  }
-  46% {
-    transform: translate3d(-8%, 4%, 0) rotate(-3deg) scale(1.13);
-    background-position: 42% 42%, 30% 54%, 56% 74%;
-    opacity: 0.74;
-  }
-  100% {
-    transform: translate3d(4%, 6%, 0) rotate(8deg) scale(1.07);
-    background-position: 78% 57%, 18% 48%, 48% 68%;
-    opacity: 0.6;
-  }
-}
-
-@keyframes beamDrift {
-  0% {
-    transform: translate3d(-2%, 0, 0) scale(1.01);
-    background-position: 0% 50%, 100% 45%, 50% 50%, 50% 50%;
-    opacity: 0.84;
-  }
-  100% {
-    transform: translate3d(2.2%, -1%, 0) scale(1.03);
-    background-position: 100% 44%, 0% 54%, 50% 50%, 50% 50%;
-    opacity: 1;
-  }
-}
-
 @keyframes pulse {
   0%,
   100% {
@@ -1679,9 +1586,6 @@ details p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .liquid-hero-background,
-  .hero::before,
-  .hero::after,
   .hero-visual::after,
   .visual-orbit,
   .flow-line::after,
