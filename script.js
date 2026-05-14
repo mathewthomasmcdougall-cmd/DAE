@@ -286,7 +286,7 @@ const initLiquidHeroBackground = (canvas) => {
     resize();
 
     const { width, height } = state;
-    const time = now * 0.001;
+    const time = now * 0.00115;
 
     drawBase(width, height);
     drawShadowBand({

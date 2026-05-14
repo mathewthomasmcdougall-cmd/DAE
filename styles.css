@@ -7,7 +7,7 @@
   --blue: #0067f4;
   --sky: #76b9fc;
   --deep-blue: #1f26aa;
-  --hero-rail: 1280px;
+  --hero-rail: clamp(1280px, 85vw, 1460px);
   --max: var(--hero-rail);
 }
 
@@ -801,6 +801,56 @@ p {
   padding: 18px 14px 28px;
   overflow: hidden;
   mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+}
+
+@media (min-width: 1600px) {
+  .hero {
+    min-height: clamp(650px, 70vh, 760px);
+    padding-top: clamp(64px, 5.5vh, 78px);
+    padding-bottom: clamp(18px, 2.1vh, 26px);
+  }
+
+  .hero-content {
+    grid-template-columns: minmax(500px, 0.92fr) minmax(560px, 1.08fr);
+    gap: clamp(72px, 6vw, 118px);
+  }
+
+  h1 {
+    max-width: 650px;
+    font-size: clamp(52px, 3.25vw, 62px);
+  }
+
+  .hero-copy p {
+    max-width: 540px;
+    font-size: 17px;
+  }
+
+  .proof-metrics {
+    max-width: 560px;
+  }
+
+  .proof-metrics div {
+    padding: 12px 13px;
+  }
+
+  .proof-metrics strong {
+    font-size: 29px;
+  }
+
+  .hero-visual {
+    min-height: clamp(420px, 43vh, 510px);
+    width: min(87%, 660px);
+    transform: translate3d(18px, 32px, 0) scale(1);
+  }
+
+  .logo-marquee {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .marquee-track span {
+    font-size: 26px;
+  }
 }
 
 .marquee-track {
