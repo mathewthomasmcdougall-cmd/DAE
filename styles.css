@@ -1440,7 +1440,7 @@ p {
   position: relative;
   z-index: 2;
   width: min(100%, var(--hero-rail));
-  margin: 0 auto 58px;
+  margin: 0 auto 36px;
 }
 
 .os-section-head > div {
@@ -1468,15 +1468,15 @@ p {
 
 .os-visual {
   position: relative;
-  width: min(100%, calc(var(--hero-rail) - 20px));
-  min-height: 720px;
+  width: min(100%, calc(var(--hero-rail) - 90px));
+  min-height: 680px;
   margin: 0 auto;
   border-radius: 28px;
 }
 
 .os-visual::before {
   position: absolute;
-  inset: 7% -1% 6%;
+  inset: 4% 1% 7%;
   content: "";
   border: 0;
   border-radius: 0;
@@ -1496,7 +1496,7 @@ p {
 
 .os-visual::after {
   position: absolute;
-  inset: 12% 22% 22% 17%;
+  inset: 14% 24% 20% 22%;
   content: "";
   border-radius: 999px;
   background: radial-gradient(ellipse at center, rgba(92, 247, 187, 0.18), rgba(0, 103, 244, 0.1) 38%, transparent 72%);
@@ -1508,7 +1508,7 @@ p {
 
 .os-network {
   position: absolute;
-  inset: 17% 6% 25%;
+  inset: 15% 7% 20%;
   z-index: 1;
   overflow: visible;
   pointer-events: none;
@@ -1602,7 +1602,7 @@ p {
 
 .ads-node {
   top: 39%;
-  left: 5.4%;
+  left: 8.5%;
 }
 
 .ads-node::before {
@@ -1612,8 +1612,8 @@ p {
 }
 
 .funnel-node {
-  top: 31%;
-  left: 28%;
+  top: 28.5%;
+  left: 30%;
   width: 300px;
   min-height: 188px;
   padding: 22px;
@@ -1628,8 +1628,8 @@ p {
 }
 
 .ai-node {
-  top: 13%;
-  right: 27%;
+  top: 12%;
+  right: 25.5%;
 }
 
 .ai-node::before {
@@ -1639,8 +1639,8 @@ p {
 }
 
 .crm-node {
-  top: 31.5%;
-  right: 1.8%;
+  top: 32%;
+  right: 5.2%;
 }
 
 .crm-node::before {
@@ -1650,8 +1650,8 @@ p {
 }
 
 .setter-node {
-  bottom: 20%;
-  left: 29%;
+  bottom: 11.5%;
+  left: 31.5%;
 }
 
 .setter-node::before {
@@ -1661,8 +1661,8 @@ p {
 }
 
 .booking-node {
-  right: 28.8%;
-  bottom: 16.5%;
+  right: 30%;
+  bottom: 11%;
 }
 
 .booking-node::before {
@@ -1672,8 +1672,8 @@ p {
 }
 
 .revenue-node {
-  right: 2%;
-  bottom: 17.5%;
+  right: 6%;
+  bottom: 10.5%;
 }
 
 .revenue-node::before {
@@ -1812,8 +1812,8 @@ p {
 }
 
 .qualification-widget {
-  top: 5%;
-  right: 10.4%;
+  top: 6%;
+  right: 8%;
   width: 190px;
   background:
     radial-gradient(circle at 12% 0%, rgba(92, 247, 187, 0.13), transparent 44%),
@@ -1822,15 +1822,15 @@ p {
 
 .qualification-widget::before {
   top: 100%;
-  left: 14%;
+  left: 18%;
   width: 1px;
-  height: 38px;
+  height: 24px;
   background: linear-gradient(180deg, rgba(92, 247, 187, 0.36), transparent);
 }
 
 .queue-widget {
-  bottom: -0.6%;
-  left: 17.2%;
+  bottom: -5.2%;
+  left: 19%;
   width: 196px;
   animation-delay: 0.8s;
 }
@@ -1839,13 +1839,13 @@ p {
   right: 48%;
   bottom: 100%;
   width: 1px;
-  height: 44px;
+  height: 30px;
   background: linear-gradient(180deg, transparent, rgba(92, 247, 187, 0.3));
 }
 
 .revenue-widget {
-  right: 12.2%;
-  bottom: 0.8%;
+  right: 13%;
+  bottom: -5%;
   width: 194px;
   opacity: 0.94;
   animation-delay: 1.6s;
@@ -1855,7 +1855,7 @@ p {
   right: 45%;
   bottom: 100%;
   width: 1px;
-  height: 44px;
+  height: 30px;
   background: linear-gradient(180deg, transparent, rgba(92, 247, 187, 0.3));
 }
 
