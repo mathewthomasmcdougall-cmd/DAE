@@ -69,8 +69,10 @@ const initLiquidHeroBackground = (canvas) => {
 
   const palette = {
     black: "#02020d",
-    deepBlue: "#0c0e4b",
+    deepBlue: "#070832",
+    inkBlue: "#11165f",
     richBlue: "#1f26aa",
+    electricBlue: "rgba(0, 103, 244,",
     skyBlue: "rgba(118, 185, 252,",
     mint: "rgba(92, 247, 187,",
     white: "rgba(255, 255, 255,",
@@ -103,14 +105,14 @@ const initLiquidHeroBackground = (canvas) => {
     const base = ctx.createLinearGradient(0, 0, width, height);
     base.addColorStop(0, palette.black);
     base.addColorStop(0.42, palette.deepBlue);
-    base.addColorStop(0.76, palette.richBlue);
+    base.addColorStop(0.76, palette.inkBlue);
     base.addColorStop(1, palette.black);
     ctx.fillStyle = base;
     ctx.fillRect(0, 0, width, height);
 
     const glow = ctx.createRadialGradient(width * 0.72, height * 0.46, 0, width * 0.72, height * 0.46, width * 0.74);
-    glow.addColorStop(0, `${palette.skyBlue} 0.2)`);
-    glow.addColorStop(0.38, "rgba(31, 38, 170, 0.32)");
+    glow.addColorStop(0, `${palette.skyBlue} 0.22)`);
+    glow.addColorStop(0.38, "rgba(31, 38, 170, 0.36)");
     glow.addColorStop(1, "rgba(2, 2, 13, 0)");
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, width, height);
@@ -121,6 +123,51 @@ const initLiquidHeroBackground = (canvas) => {
     leftDepth.addColorStop(1, "rgba(2, 2, 13, 0)");
     ctx.fillStyle = leftDepth;
     ctx.fillRect(0, 0, width, height);
+  };
+
+  const drawPaperShaderMesh = (width, height, time) => {
+    ctx.save();
+    ctx.globalCompositeOperation = "screen";
+    ctx.filter = `blur(${Math.max(28, width * 0.026)}px)`;
+
+    const anchors = [
+      {
+        x: 0.32 + Math.sin(time * 0.18) * 0.1,
+        y: 0.34 + Math.cos(time * 0.14) * 0.08,
+        radius: 0.54,
+        color: (alpha) => `${palette.electricBlue} ${alpha})`,
+        alpha: 0.28,
+      },
+      {
+        x: 0.72 + Math.cos(time * 0.13 + 1.7) * 0.12,
+        y: 0.42 + Math.sin(time * 0.17 + 0.8) * 0.1,
+        radius: 0.62,
+        color: (alpha) => `${palette.skyBlue} ${alpha})`,
+        alpha: 0.2,
+      },
+      {
+        x: 0.48 + Math.sin(time * 0.11 + 2.4) * 0.16,
+        y: 0.68 + Math.cos(time * 0.16 + 1.1) * 0.09,
+        radius: 0.42,
+        color: (alpha) => `${palette.mint} ${alpha})`,
+        alpha: 0.12,
+      },
+    ];
+
+    anchors.forEach((anchor) => {
+      const x = anchor.x * width;
+      const y = anchor.y * height;
+      const radius = anchor.radius * width;
+      const mesh = ctx.createRadialGradient(x, y, 0, x, y, radius);
+      mesh.addColorStop(0, anchor.color(anchor.alpha));
+      mesh.addColorStop(0.36, anchor.color(anchor.alpha * 0.52));
+      mesh.addColorStop(0.72, anchor.color(anchor.alpha * 0.14));
+      mesh.addColorStop(1, "rgba(2, 2, 13, 0)");
+      ctx.fillStyle = mesh;
+      ctx.fillRect(0, 0, width, height);
+    });
+
+    ctx.restore();
   };
 
   const drawLiquidBand = ({ alpha, amplitude, color, frequency, offset, phase, thickness, width, height }) => {
@@ -286,9 +333,10 @@ const initLiquidHeroBackground = (canvas) => {
     resize();
 
     const { width, height } = state;
-    const time = now * 0.00115;
+    const time = now * 0.00132;
 
     drawBase(width, height);
+    drawPaperShaderMesh(width, height, time);
     drawShadowBand({
       alpha: 0.68 + Math.sin(time * 0.18) * 0.08,
       amplitude: height * 0.12,

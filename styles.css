@@ -226,8 +226,8 @@ img {
   overflow: hidden;
   border-radius: 4px;
   background:
-    radial-gradient(110% 92% at 72% 42%, rgba(31, 38, 170, 0.48), transparent 62%),
-    radial-gradient(132% 124% at 51% -16%, #02020d 0%, #0c0e4b 55%, #1732a0 100%);
+    radial-gradient(110% 92% at 72% 42%, rgba(31, 38, 170, 0.52), transparent 62%),
+    radial-gradient(132% 124% at 51% -16%, #02020d 0%, #070832 48%, #151a8c 78%, #02020d 100%);
   color: var(--white);
   isolation: isolate;
 }
@@ -239,12 +239,30 @@ img {
   overflow: hidden;
   pointer-events: none;
   background:
-    radial-gradient(105% 82% at 70% 40%, rgba(31, 38, 170, 0.42), transparent 62%),
-    radial-gradient(88% 72% at 24% 62%, rgba(0, 103, 244, 0.2), transparent 66%),
+    radial-gradient(105% 82% at 72% 38%, rgba(31, 38, 170, 0.44), transparent 62%),
+    radial-gradient(88% 72% at 24% 62%, rgba(0, 103, 244, 0.22), transparent 66%),
+    linear-gradient(135deg, rgba(2, 2, 13, 0.96), rgba(8, 10, 56, 0.78) 45%, rgba(2, 2, 13, 0.98)),
     #02020d;
 }
 
+.liquid-hero-background::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  background-image:
+    radial-gradient(circle, rgba(118, 185, 252, 0.16) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(92, 247, 187, 0.12) 0 1px, transparent 1.6px);
+  background-position: 0 0, 18px 18px;
+  background-size: 36px 36px, 54px 54px;
+  mix-blend-mode: soft-light;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
 .liquid-hero-background canvas {
+  position: relative;
+  z-index: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -254,10 +272,11 @@ img {
 .liquid-hero-background::after {
   position: absolute;
   inset: 0;
+  z-index: 2;
   content: "";
   background:
-    radial-gradient(90% 104% at 50% 48%, transparent 32%, rgba(2, 2, 13, 0.74) 100%),
-    linear-gradient(180deg, rgba(2, 2, 13, 0.34), transparent 30%, rgba(2, 2, 13, 0.54));
+    radial-gradient(90% 104% at 50% 48%, transparent 30%, rgba(2, 2, 13, 0.78) 100%),
+    linear-gradient(180deg, rgba(2, 2, 13, 0.44), transparent 30%, rgba(2, 2, 13, 0.58));
   pointer-events: none;
 }
 
