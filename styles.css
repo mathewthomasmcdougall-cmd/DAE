@@ -1440,7 +1440,7 @@ p {
   position: relative;
   z-index: 2;
   width: min(100%, var(--hero-rail));
-  margin: 0 auto 36px;
+  margin: 0 auto 34px;
 }
 
 .os-section-head > div {
@@ -1468,15 +1468,15 @@ p {
 
 .os-visual {
   position: relative;
-  width: min(100%, calc(var(--hero-rail) - 90px));
-  min-height: 680px;
+  width: min(100%, calc(var(--hero-rail) - 40px));
+  min-height: 640px;
   margin: 0 auto;
   border-radius: 28px;
 }
 
 .os-visual::before {
   position: absolute;
-  inset: 4% 1% 7%;
+  inset: 3% 1% 5%;
   content: "";
   border: 0;
   border-radius: 0;
@@ -1496,7 +1496,7 @@ p {
 
 .os-visual::after {
   position: absolute;
-  inset: 14% 24% 20% 22%;
+  inset: 12% 18% 16%;
   content: "";
   border-radius: 999px;
   background: radial-gradient(ellipse at center, rgba(92, 247, 187, 0.18), rgba(0, 103, 244, 0.1) 38%, transparent 72%);
@@ -1508,7 +1508,7 @@ p {
 
 .os-network {
   position: absolute;
-  inset: 15% 7% 20%;
+  inset: 15% 4.5% 15%;
   z-index: 1;
   overflow: visible;
   pointer-events: none;
@@ -1520,20 +1520,20 @@ p {
 }
 
 .os-network-base {
-  stroke: rgba(118, 185, 252, 0.2);
+  stroke: rgba(118, 185, 252, 0.24);
   stroke-linecap: round;
-  stroke-width: 1.35;
+  stroke-width: 1.25;
 }
 
 .os-handoff-base {
-  stroke: rgba(92, 247, 187, 0.3);
+  stroke: rgba(92, 247, 187, 0.34);
   stroke-linecap: round;
-  stroke-width: 1.3;
+  stroke-width: 1.45;
 }
 
 .os-network-pulse {
   stroke: rgba(92, 247, 187, 0.62);
-  stroke-dasharray: 14 192;
+  stroke-dasharray: 12 178;
   stroke-linecap: round;
   stroke-width: 2;
   filter: drop-shadow(0 0 8px rgba(92, 247, 187, 0.34));
@@ -1542,7 +1542,7 @@ p {
 
 .os-handoff-pulse {
   stroke: rgba(92, 247, 187, 0.7);
-  stroke-dasharray: 10 100;
+  stroke-dasharray: 9 88;
   stroke-linecap: round;
   stroke-width: 2;
   filter: drop-shadow(0 0 7px rgba(92, 247, 187, 0.3));
@@ -1559,9 +1559,9 @@ p {
   z-index: 2;
   display: grid;
   align-content: start;
-  width: 245px;
-  min-height: 166px;
-  padding: 18px;
+  width: 232px;
+  min-height: 154px;
+  padding: 17px;
   border: 1px solid rgba(255, 255, 255, 0.095);
   border-radius: 18px;
   background:
@@ -1601,8 +1601,8 @@ p {
 }
 
 .ads-node {
-  top: 39%;
-  left: 8.5%;
+  top: 20%;
+  left: 1.8%;
 }
 
 .ads-node::before {
@@ -1612,12 +1612,12 @@ p {
 }
 
 .funnel-node {
-  top: 28.5%;
-  left: 30%;
-  width: 300px;
-  min-height: 188px;
-  padding: 22px;
-  transform: translateY(-4px) scale(1.03);
+  top: 17%;
+  left: 25.2%;
+  width: 274px;
+  min-height: 176px;
+  padding: 20px;
+  transform: translateY(-4px) scale(1.02);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.11), 0 30px 92px rgba(0, 0, 0, 0.28), 0 0 64px rgba(92, 247, 187, 0.09);
 }
 
@@ -1628,8 +1628,8 @@ p {
 }
 
 .ai-node {
-  top: 12%;
-  right: 25.5%;
+  top: 20%;
+  left: 50.2%;
 }
 
 .ai-node::before {
@@ -1639,8 +1639,8 @@ p {
 }
 
 .crm-node {
-  top: 32%;
-  right: 5.2%;
+  top: 20%;
+  right: 1.8%;
 }
 
 .crm-node::before {
@@ -1650,8 +1650,8 @@ p {
 }
 
 .setter-node {
-  bottom: 11.5%;
-  left: 31.5%;
+  bottom: 21%;
+  left: 25.2%;
 }
 
 .setter-node::before {
@@ -1661,8 +1661,8 @@ p {
 }
 
 .booking-node {
-  right: 30%;
-  bottom: 11%;
+  bottom: 21%;
+  left: 50.2%;
 }
 
 .booking-node::before {
@@ -1672,8 +1672,8 @@ p {
 }
 
 .revenue-node {
-  right: 6%;
-  bottom: 10.5%;
+  right: 1.8%;
+  bottom: 21%;
 }
 
 .revenue-node::before {
@@ -1741,27 +1741,27 @@ p {
 
 .os-node h3 {
   color: var(--white);
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .funnel-node h3 {
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .os-node p {
   margin-top: 10px;
   color: rgba(255, 255, 255, 0.62);
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.45;
 }
 
 .os-floating-card {
   position: absolute;
   z-index: 4;
-  width: 220px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  border-radius: 18px;
+  width: 170px;
+  padding: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.105);
+  border-radius: 15px;
   background: rgba(6, 8, 42, 0.74);
   box-shadow: 0 24px 74px rgba(0, 0, 0, 0.28), inset 0 1px rgba(255, 255, 255, 0.09);
   backdrop-filter: blur(20px) saturate(1.14);
@@ -1790,7 +1790,7 @@ p {
   display: block;
   margin-top: 8px;
   color: var(--white);
-  font-size: 28px;
+  font-size: 22px;
   letter-spacing: -0.05em;
 }
 
@@ -1812,9 +1812,9 @@ p {
 }
 
 .qualification-widget {
-  top: 6%;
-  right: 8%;
-  width: 190px;
+  top: 2.8%;
+  left: 58.5%;
+  width: 164px;
   background:
     radial-gradient(circle at 12% 0%, rgba(92, 247, 187, 0.13), transparent 44%),
     rgba(6, 8, 42, 0.78);
@@ -1822,40 +1822,40 @@ p {
 
 .qualification-widget::before {
   top: 100%;
-  left: 18%;
+  left: 50%;
   width: 1px;
-  height: 24px;
+  height: 30px;
   background: linear-gradient(180deg, rgba(92, 247, 187, 0.36), transparent);
 }
 
 .queue-widget {
-  bottom: -5.2%;
-  left: 19%;
-  width: 196px;
+  bottom: -6%;
+  left: 27.3%;
+  width: 168px;
   animation-delay: 0.8s;
 }
 
 .queue-widget::before {
-  right: 48%;
+  right: 50%;
   bottom: 100%;
   width: 1px;
-  height: 30px;
+  height: 24px;
   background: linear-gradient(180deg, transparent, rgba(92, 247, 187, 0.3));
 }
 
 .revenue-widget {
-  right: 13%;
-  bottom: -5%;
-  width: 194px;
+  right: 4%;
+  bottom: -6%;
+  width: 168px;
   opacity: 0.94;
   animation-delay: 1.6s;
 }
 
 .revenue-widget::before {
-  right: 45%;
+  right: 50%;
   bottom: 100%;
   width: 1px;
-  height: 30px;
+  height: 24px;
   background: linear-gradient(180deg, transparent, rgba(92, 247, 187, 0.3));
 }
 
