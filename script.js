@@ -298,6 +298,79 @@ const initLiquidHeroBackground = (canvas) => {
     ctx.restore();
   };
 
+  const drawDotOrbit = (width, height, time) => {
+    const orbitSets = [
+      {
+        x: width * 0.72,
+        y: height * 0.46,
+        radius: Math.min(width, height) * 0.34,
+        dots: 26,
+        speed: 0.1,
+        alpha: 0.2,
+        color: (alpha) => `${palette.skyBlue} ${alpha})`,
+      },
+      {
+        x: width * 0.5,
+        y: height * 0.56,
+        radius: Math.min(width, height) * 0.48,
+        dots: 34,
+        speed: -0.07,
+        alpha: 0.14,
+        color: (alpha) => `${palette.mint} ${alpha})`,
+      },
+      {
+        x: width * 0.27,
+        y: height * 0.62,
+        radius: Math.min(width, height) * 0.28,
+        dots: 18,
+        speed: 0.13,
+        alpha: 0.12,
+        color: (alpha) => `${palette.electricBlue} ${alpha})`,
+      },
+    ];
+
+    ctx.save();
+    ctx.globalCompositeOperation = "screen";
+    ctx.lineWidth = 1;
+
+    orbitSets.forEach((orbit, orbitIndex) => {
+      const breathing = 1 + Math.sin(time * 0.22 + orbitIndex) * 0.045;
+      const radiusX = orbit.radius * breathing * (1.26 + orbitIndex * 0.08);
+      const radiusY = orbit.radius * breathing * (0.5 + orbitIndex * 0.04);
+      const rotation = -0.24 + orbitIndex * 0.18 + Math.sin(time * 0.08 + orbitIndex) * 0.06;
+
+      ctx.save();
+      ctx.translate(orbit.x, orbit.y);
+      ctx.rotate(rotation);
+
+      ctx.beginPath();
+      ctx.ellipse(0, 0, radiusX, radiusY, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = orbit.color(orbit.alpha * 0.12);
+      ctx.stroke();
+
+      for (let index = 0; index < orbit.dots; index += 1) {
+        const progress = index / orbit.dots;
+        const angle = progress * Math.PI * 2 + time * orbit.speed;
+        const shimmer = 0.45 + Math.sin(time * 1.8 + index * 0.74 + orbitIndex) * 0.55;
+        const dotAlpha = orbit.alpha * (0.22 + shimmer * 0.44);
+        const dotRadius = 0.8 + shimmer * 1.15;
+        const x = Math.cos(angle) * radiusX;
+        const y = Math.sin(angle) * radiusY;
+
+        ctx.beginPath();
+        ctx.fillStyle = orbit.color(dotAlpha);
+        ctx.shadowColor = orbit.color(dotAlpha * 0.9);
+        ctx.shadowBlur = 8 + shimmer * 10;
+        ctx.arc(x, y, dotRadius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.restore();
+    });
+
+    ctx.restore();
+  };
+
   const drawVignette = (width, height) => {
     ctx.save();
     ctx.globalCompositeOperation = "multiply";
@@ -405,6 +478,7 @@ const initLiquidHeroBackground = (canvas) => {
       width,
     });
     drawBeams(width, height, time);
+    drawDotOrbit(width, height, time);
     drawVignette(width, height);
 
     state.animationFrame = requestAnimationFrame(render);
