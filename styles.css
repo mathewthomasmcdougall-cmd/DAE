@@ -1402,7 +1402,7 @@ p {
   width: calc(100% - 12px);
   max-width: none;
   margin-top: 12px;
-  padding: 110px max(14px, calc((100vw - var(--hero-rail)) / 2)) 120px;
+  padding: 124px max(14px, calc((100vw - var(--hero-rail)) / 2)) 120px;
   overflow: hidden;
   border-radius: 4px;
   background:
@@ -1440,7 +1440,7 @@ p {
   position: relative;
   z-index: 2;
   width: min(100%, var(--hero-rail));
-  margin: 0 auto 72px;
+  margin: 0 auto 78px;
 }
 
 .os-section-head > div {
@@ -1501,10 +1501,10 @@ p {
 
 .os-visual::after {
   position: absolute;
-  inset: 18% 7% 12%;
+  inset: 16% 6% 10%;
   content: "";
   border-radius: 999px;
-  background: radial-gradient(ellipse at center, rgba(92, 247, 187, 0.12), rgba(0, 103, 244, 0.08) 38%, transparent 72%);
+  background: radial-gradient(ellipse at center, rgba(92, 247, 187, 0.15), rgba(0, 103, 244, 0.09) 38%, transparent 72%);
   filter: blur(34px);
   opacity: 0.62;
   pointer-events: none;
@@ -1522,8 +1522,7 @@ p {
   transform: translateY(-50%);
 }
 
-.os-flow-line::before,
-.os-flow-line::after {
+.os-flow-line::before {
   position: absolute;
   top: 50%;
   right: 0;
@@ -1533,10 +1532,6 @@ p {
   border-top: 1px solid rgba(92, 247, 187, 0.58);
   border-right: 1px solid rgba(92, 247, 187, 0.58);
   transform: translateY(-50%) rotate(45deg);
-}
-
-.os-flow-line::after {
-  right: 32.5%;
 }
 
 .os-flow-line span {
@@ -1551,9 +1546,7 @@ p {
 .os-path {
   position: absolute;
   z-index: 1;
-  height: 1px;
   overflow: hidden;
-  background: linear-gradient(90deg, transparent, rgba(118, 185, 252, 0.18), rgba(92, 247, 187, 0.22), rgba(118, 185, 252, 0.16), transparent);
   opacity: 0.82;
   pointer-events: none;
 }
@@ -1568,28 +1561,33 @@ p {
 }
 
 .os-path-top {
-  top: 53%;
-  right: 13%;
-  left: 63%;
-  width: 1px;
-  height: 104px;
-  background: linear-gradient(180deg, rgba(92, 247, 187, 0.3), rgba(118, 185, 252, 0.18), transparent);
+  display: none;
+  top: 52.5%;
+  left: 35%;
+  width: 52%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(118, 185, 252, 0.14), rgba(92, 247, 187, 0.24), transparent);
+  transform: rotate(158deg);
+  transform-origin: right center;
 }
 
 .os-path-bottom {
-  right: 14%;
-  bottom: 31%;
-  left: 9%;
+  right: 9%;
+  bottom: 30%;
+  left: 25%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(118, 185, 252, 0.18), rgba(92, 247, 187, 0.24), rgba(118, 185, 252, 0.16), transparent);
 }
 
 .os-path-top span {
-  width: 100%;
-  height: 32%;
-  animation-name: osPulseVertical;
+  width: 18%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(92, 247, 187, 0.58), transparent);
+  animation-delay: 1.2s;
 }
 
 .os-path-bottom span {
-  animation-delay: 1.8s;
+  animation-delay: 2.3s;
 }
 
 .os-node {
@@ -1623,13 +1621,11 @@ p {
   transform: translate(50%, -50%);
 }
 
-.crm-node::before {
-  top: auto;
-  right: 50%;
-  bottom: -48px;
-  transform: translate(50%, 50%);
+.booking-node::before {
+  right: -14px;
 }
 
+.crm-node::before,
 .revenue-node::before {
   display: none;
 }
@@ -1689,6 +1685,7 @@ p {
 }
 
 .funnel-node,
+.ai-node,
 .crm-node,
 .revenue-node {
   border-color: rgba(92, 247, 187, 0.18);
@@ -1700,6 +1697,7 @@ p {
 }
 
 .funnel-node span,
+.ai-node span,
 .crm-node span,
 .revenue-node span {
   background: rgba(92, 247, 187, 0.18);
