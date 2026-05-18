@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./os-rail.css" />
   </head>
   <body>
     <div class="announcement" data-announcement>
@@ -278,64 +279,66 @@
             </p>
           </div>
         </div>
-        <div class="os-visual" aria-label="DAE operating system workflow">
-          <svg class="os-network" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <path class="os-network-base" d="M 10 25 H 80 V 70 H 33 H 80" />
-            <path class="os-network-pulse" d="M 10 25 H 80 V 70 H 33 H 80" />
-          </svg>
-          <div class="os-node ads-node">
-            <span>01</span>
-            <h3>Paid Ads</h3>
-            <p>Google Ads and Meta campaigns generate high-intent implant and cosmetic enquiries.</p>
-          </div>
-          <div class="os-node funnel-node">
-            <span>02</span>
-            <h3>Qualification Funnel</h3>
-            <p>Patients move through an assessment flow that captures intent, budget, treatment interest, and readiness.</p>
-          </div>
-          <div class="os-node ai-node">
-            <span>03</span>
-            <h3>AI Qualification Engine</h3>
-            <p>DAE scores leads based on suitability, urgency, location, and consultation readiness.</p>
-          </div>
-          <div class="os-node crm-node">
-            <span>04</span>
-            <h3>CRM Automation</h3>
-            <p>Qualified opportunities enter pipelines with SMS, email, reminders, missed-call recovery, and follow-up logic.</p>
-          </div>
-          <div class="os-node setter-node">
-            <span>05</span>
-            <h3>Appointment Setter</h3>
-            <p>Setters work from a prioritised call queue with lead context, notes, and next-best-action prompts.</p>
-          </div>
-          <div class="os-node booking-node">
-            <span>06</span>
-            <h3>Booked Consultation</h3>
-            <p>Patients are scheduled with confirmation, reminders, and no-show prevention.</p>
-          </div>
-          <div class="os-node revenue-node">
-            <span>07</span>
-            <h3>Revenue Tracking</h3>
-            <p>Campaigns, leads, booked consults, and treatment outcomes are tracked through the pipeline.</p>
-          </div>
-
-          <div class="os-floating-card qualification-widget">
-            <small>Qualification Score</small>
-            <strong>92</strong>
-            <div><span>Intent</span><b>High</b></div>
-            <div><span>Treatment</span><b>Implant</b></div>
-            <div><span>Ready</span><b>7 days</b></div>
-          </div>
-          <div class="os-floating-card queue-widget">
-            <small>Setter Queue</small>
-            <strong>18 priority calls</strong>
-            <p>Next-best-action prompts live for each qualified patient.</p>
-          </div>
-          <div class="os-floating-card revenue-widget">
-            <small>Revenue Pipeline</small>
-            <strong>$312k</strong>
-            <p>Attributed treatment value from active campaigns.</p>
-          </div>
+        <div class="os-visual os-rail-system" aria-label="DAE patient acquisition operating system workflow">
+          <div class="os-rail-line" aria-hidden="true"><span></span></div>
+          <ol class="os-rail" role="list">
+            <li class="os-stage os-stage-secondary" style="--stage-delay: 0s">
+              <span class="stage-number">01</span>
+              <h3>Paid Ads</h3>
+              <p>Google Ads and Meta campaigns generate high-intent implant and cosmetic enquiries.</p>
+              <small>Implant and cosmetic demand</small>
+            </li>
+            <li class="os-stage os-stage-primary" style="--stage-delay: 1.05s">
+              <span class="stage-number">02</span>
+              <h3>Qualification Funnel</h3>
+              <p>Patients complete a conversion-focused assessment that captures treatment interest, urgency, budget, location, and readiness.</p>
+              <small>Patient intent captured</small>
+            </li>
+            <li class="os-stage os-stage-primary" style="--stage-delay: 2.1s">
+              <span class="stage-number">03</span>
+              <h3>AI Qualification</h3>
+              <p>Leads are scored based on intent, suitability, affordability, and consultation readiness.</p>
+              <div class="stage-utility qualification-panel">
+                <small>Qualification Score</small>
+                <strong>92</strong>
+                <div><span>Budget</span><b>Qualified</b></div>
+                <div><span>Treatment</span><b>Implant</b></div>
+                <div><span>Ready</span><b>7 days</b></div>
+              </div>
+            </li>
+            <li class="os-stage os-stage-primary" style="--stage-delay: 3.15s">
+              <span class="stage-number">04</span>
+              <h3>CRM Automation</h3>
+              <p>Qualified patients enter automated SMS, email, reminder, missed-call, and follow-up workflows.</p>
+              <small>No opportunity left idle</small>
+            </li>
+            <li class="os-stage os-stage-secondary" style="--stage-delay: 4.2s">
+              <span class="stage-number">05</span>
+              <h3>Appointment Setter</h3>
+              <p>Setters work from a prioritised queue with lead context, notes, and next-best-action prompts.</p>
+              <div class="stage-utility setter-panel">
+                <strong>18 Priority Calls</strong>
+                <div><span>New qualified leads</span><b>6</b></div>
+                <div><span>Callbacks due</span><b>4</b></div>
+              </div>
+            </li>
+            <li class="os-stage os-stage-secondary" style="--stage-delay: 5.25s">
+              <span class="stage-number">06</span>
+              <h3>Booked Consultation</h3>
+              <p>Patients are scheduled into the clinic calendar with reminders and no-show prevention.</p>
+              <small>Consults protected</small>
+            </li>
+            <li class="os-stage os-stage-secondary" style="--stage-delay: 6.3s">
+              <span class="stage-number">07</span>
+              <h3>Revenue Tracking</h3>
+              <p>Booked consultations and treatment outcomes are tracked back to campaigns and pipelines.</p>
+              <div class="stage-utility revenue-panel">
+                <strong>$312K Revenue Pipeline</strong>
+                <div><span>Booked consults</span><b>18</b></div>
+                <div><span>Conversion rate</span><b>12.6%</b></div>
+              </div>
+            </li>
+          </ol>
         </div>
       </section>
 
