@@ -44,7 +44,7 @@
 .metrics-dashboard {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
   width: min(100%, var(--hero-rail));
   margin: 0 auto;
@@ -63,8 +63,9 @@
 
 .metric-card {
   position: relative;
-  grid-column: span 4;
-  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  min-height: 336px;
   padding: 24px;
   overflow: hidden;
   border: 1px solid rgba(2, 2, 13, 0.1);
@@ -78,9 +79,8 @@
 }
 
 .metric-card-hero {
-  grid-column: span 7;
-  grid-row: span 2;
-  min-height: 548px;
+  grid-column: 1 / -1;
+  min-height: 374px;
   padding: 34px;
   color: var(--white);
   border-color: rgba(255, 255, 255, 0.13);
@@ -92,12 +92,11 @@
 }
 
 .metric-card-secondary {
-  grid-column: span 5;
-  min-height: 265px;
+  min-height: 336px;
 }
 
 .metric-card-support {
-  min-height: 292px;
+  min-height: 336px;
 }
 
 .metric-card::before {
@@ -135,11 +134,11 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 34px;
+  margin-bottom: 30px;
 }
 
 .metric-card-hero .metric-card-top {
-  margin-bottom: 44px;
+  margin-bottom: 38px;
 }
 
 .metric-card-top span,
@@ -178,7 +177,7 @@
 
 .metric-card h3 {
   color: #02020d;
-  font-size: 25px;
+  font-size: clamp(24px, 1.8vw, 30px);
   letter-spacing: -0.04em;
   line-height: 1.12;
 }
@@ -207,12 +206,16 @@
 .metric-state-list {
   display: grid;
   gap: 9px;
+  min-height: 144px;
   margin-top: 26px;
+  padding-top: 2px;
 }
 
 .metric-card-hero .metric-state-list {
-  max-width: 560px;
-  margin-top: 34px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: none;
+  min-height: auto;
+  margin-top: auto;
 }
 
 .metric-state-list div {
@@ -220,8 +223,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  min-height: 42px;
-  padding: 11px 13px;
+  min-height: 44px;
+  padding: 12px 14px;
   border: 1px solid rgba(2, 2, 13, 0.075);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.64);
@@ -260,7 +263,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 25px;
+  min-height: 34px;
+  margin-top: auto;
+  margin-bottom: 12px;
 }
 
 .metric-route::before {
@@ -312,14 +317,8 @@
 }
 
 @media (max-width: 1199px) {
-  .metrics-dashboard {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .metric-card,
   .metric-card-hero {
-    grid-column: span 1;
-    grid-row: auto;
+    min-height: 360px;
   }
 }
 
@@ -332,8 +331,15 @@
     grid-template-columns: 1fr;
   }
 
-  .metric-card {
+  .metric-card,
+  .metric-card-hero {
     min-height: auto;
+    grid-column: auto;
+  }
+
+  .metric-card-hero .metric-state-list {
+    grid-template-columns: 1fr;
+    margin-top: 28px;
   }
 
   .metrics-head p:not(.eyebrow) {
