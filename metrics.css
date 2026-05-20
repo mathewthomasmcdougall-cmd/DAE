@@ -376,3 +376,192 @@
     animation: none;
   }
 }
+
+.why-dae {
+  position: relative;
+  isolation: isolate;
+  width: calc(100% - 12px);
+  max-width: none;
+  margin: 0 auto;
+  padding: 118px max(18px, calc((100vw - var(--hero-rail)) / 2)) 112px;
+  overflow: hidden;
+  color: var(--white);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(0, 103, 244, 0.18), transparent 34%),
+    radial-gradient(circle at 84% 76%, rgba(92, 247, 187, 0.11), transparent 30%),
+    linear-gradient(135deg, #02020d 0%, #080936 48%, #02020d 100%);
+}
+
+.why-dae::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 76%);
+  opacity: 0.5;
+}
+
+.why-dae-head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.72fr);
+  gap: clamp(36px, 6vw, 96px);
+  align-items: end;
+  width: min(100%, var(--hero-rail));
+  margin: 0 auto 46px;
+}
+
+.why-dae .eyebrow {
+  grid-column: 1 / -1;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.why-dae-head h2 {
+  max-width: 780px;
+  color: var(--white);
+}
+
+.why-dae-head > p:not(.eyebrow) {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 18px;
+  line-height: 1.62;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  width: min(100%, var(--hero-rail));
+  margin: 0 auto;
+}
+
+.comparison-grid article {
+  position: relative;
+  min-height: 330px;
+  padding: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.105);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: 0 28px 86px rgba(0, 0, 0, 0.2), inset 0 1px rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px) saturate(1.05);
+}
+
+.comparison-grid article::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 22% 0%, rgba(118, 185, 252, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.comparison-grid article > * {
+  position: relative;
+}
+
+.comparison-grid article > span {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 84px;
+  place-items: center;
+  border-radius: 999px;
+  color: #5cf7bb;
+  background: rgba(92, 247, 187, 0.14);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.comparison-grid h3 {
+  color: var(--white);
+  font-size: 24px;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.comparison-grid p {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  line-height: 1.52;
+}
+
+.dae-difference-card {
+  border-color: rgba(92, 247, 187, 0.28) !important;
+  background:
+    radial-gradient(circle at 70% 16%, rgba(92, 247, 187, 0.18), transparent 34%),
+    radial-gradient(circle at 12% 100%, rgba(0, 103, 244, 0.2), transparent 38%),
+    rgba(255, 255, 255, 0.075) !important;
+  box-shadow: 0 34px 96px rgba(0, 0, 0, 0.24), 0 0 44px rgba(92, 247, 187, 0.1), inset 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+.dae-difference-card strong {
+  display: block;
+  margin-top: 24px;
+  color: #5cf7bb;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.why-dae-closing {
+  width: fit-content;
+  max-width: min(100%, 860px);
+  margin: 36px auto 0;
+  padding: 18px 24px;
+  border: 1px solid rgba(92, 247, 187, 0.18);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.065);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.18), inset 0 1px rgba(255, 255, 255, 0.06);
+  text-align: center;
+  backdrop-filter: blur(14px);
+}
+
+.why-dae-closing p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+@media (max-width: 1199px) {
+  .why-dae-head,
+  .comparison-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 809px) {
+  .why-dae {
+    padding: 78px 18px 76px;
+  }
+
+  .why-dae-head,
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-dae-head {
+    gap: 24px;
+  }
+
+  .comparison-grid article {
+    min-height: auto;
+  }
+
+  .comparison-grid article > span {
+    margin-bottom: 48px;
+  }
+
+  .why-dae-closing {
+    border-radius: 22px;
+  }
+}
