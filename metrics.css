@@ -524,16 +524,6 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-.dae-path {
-  margin-top: 18px;
-  color: rgba(92, 247, 187, 0.82);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.055em;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-
 .dae-difference-card strong {
   display: block;
   margin-top: 18px;
