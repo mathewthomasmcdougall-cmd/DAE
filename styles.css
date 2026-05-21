@@ -2182,9 +2182,9 @@ blockquote {
   padding-bottom: 104px;
   border-radius: 0;
   background:
-    radial-gradient(80% 70% at 16% 8%, rgba(0, 103, 244, 0.075), transparent 58%),
-    radial-gradient(76% 70% at 88% 24%, rgba(92, 247, 187, 0.08), transparent 62%),
-    linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+    radial-gradient(80% 70% at 16% 8%, rgba(0, 103, 244, 0.045), transparent 58%),
+    radial-gradient(76% 70% at 88% 24%, rgba(92, 247, 187, 0.04), transparent 62%),
+    #ffffff;
   color: var(--ink);
   box-shadow: none;
   isolation: isolate;
@@ -2196,11 +2196,11 @@ blockquote {
   z-index: 0;
   content: "";
   background-image:
-    linear-gradient(rgba(2, 2, 13, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(2, 2, 13, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(2, 2, 13, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 2, 13, 0.022) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.12) 72%, transparent);
-  opacity: 0.42;
+  opacity: 0.3;
   pointer-events: none;
 }
 
@@ -2211,8 +2211,8 @@ blockquote {
   height: 220px;
   content: "";
   background:
-    linear-gradient(180deg, transparent, rgba(247, 249, 252, 0.94)),
-    radial-gradient(80% 42% at 50% 100%, rgba(0, 103, 244, 0.06), transparent 72%);
+    linear-gradient(180deg, transparent, #ffffff),
+    radial-gradient(80% 42% at 50% 100%, rgba(0, 103, 244, 0.035), transparent 72%);
   pointer-events: none;
 }
 
@@ -2345,14 +2345,14 @@ blockquote {
 .footer {
   position: relative;
   width: min(100% - 12px, var(--hero-rail));
-  margin: 6px auto 6px;
+  margin: 0 auto 6px;
   overflow: hidden;
   border-radius: 30px 30px 6px 6px;
   background:
-    radial-gradient(86% 72% at 50% 0%, rgba(0, 103, 244, 0.2), transparent 62%),
-    radial-gradient(72% 74% at 18% 34%, rgba(31, 38, 170, 0.2), transparent 68%),
-    radial-gradient(64% 60% at 86% 38%, rgba(92, 247, 187, 0.09), transparent 64%),
-    linear-gradient(180deg, #02020d 0%, #080a20 28%, #02020d 100%),
+    radial-gradient(90% 76% at 50% 12%, rgba(0, 103, 244, 0.18), transparent 64%),
+    radial-gradient(74% 76% at 18% 38%, rgba(31, 38, 170, 0.18), transparent 70%),
+    radial-gradient(64% 60% at 86% 42%, rgba(92, 247, 187, 0.08), transparent 66%),
+    linear-gradient(180deg, #050612 0%, #070a22 30%, #02020d 100%),
     #02020d;
   color: var(--white);
   isolation: isolate;
@@ -2378,8 +2378,8 @@ blockquote {
   z-index: 0;
   content: "";
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 18%),
-    radial-gradient(80% 36% at 50% 0%, rgba(92, 247, 187, 0.09), transparent 72%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.026), transparent 22%),
+    radial-gradient(80% 40% at 50% 3%, rgba(92, 247, 187, 0.08), transparent 74%);
   pointer-events: none;
 }
 
@@ -2398,6 +2398,9 @@ blockquote {
   overflow: hidden;
   margin: 12px 12px 0;
   border-radius: 24px;
+  background:
+    radial-gradient(74% 86% at 50% 8%, rgba(118, 185, 252, 0.08), transparent 64%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012) 54%, transparent);
   color: var(--white);
   text-align: center;
 }
@@ -2436,10 +2439,10 @@ blockquote {
   z-index: 0;
   height: 420px;
   background:
-    radial-gradient(circle at 50% 34%, rgba(255, 255, 255, 0.065), transparent 26%),
-    radial-gradient(circle at 50% 72%, rgba(92, 247, 187, 0.1), transparent 44%),
-    radial-gradient(circle at 18% 55%, rgba(0, 103, 244, 0.18), transparent 42%);
-  opacity: 0.9;
+    radial-gradient(circle at 50% 34%, rgba(255, 255, 255, 0.05), transparent 26%),
+    radial-gradient(circle at 50% 78%, rgba(92, 247, 187, 0.075), transparent 46%),
+    radial-gradient(circle at 18% 55%, rgba(0, 103, 244, 0.12), transparent 44%);
+  opacity: 0.82;
   pointer-events: none;
 }
 
