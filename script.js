@@ -4,6 +4,13 @@ const menuButton = document.querySelector("[data-menu-button]");
 const mobileMenu = document.querySelector("[data-mobile-menu]");
 const counters = document.querySelectorAll("[data-count]");
 const liquidHeroCanvas = document.querySelector("[data-liquid-hero-canvas]");
+const launchCtaLinks = document.querySelectorAll("[data-launch-cta]");
+const launchCtaHref = "mailto:matt@getdae.com?subject=DAE%20Private%20Growth%20Audit";
+
+// TODO: Replace temporary mailto CTA flow with dedicated booking form or calendar integration.
+launchCtaLinks.forEach((link) => {
+  link.setAttribute("href", launchCtaHref);
+});
 
 const setHeaderState = () => {
   const isScrolled = window.scrollY > 24;
@@ -20,6 +27,20 @@ mobileMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     mobileMenu.classList.remove("is-open");
     menuButton?.setAttribute("aria-label", "Open navigation");
+  });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const hash = link.getAttribute("href");
+    if (!hash || hash === "#") return;
+
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.pushState(null, "", hash);
   });
 });
 
