@@ -561,8 +561,10 @@
 
 .why-dae-closing p {
   margin: 0;
+  color: #ffffff;
   font-size: 15px;
   font-weight: 800;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.14);
 }
 
 @media (max-width: 1199px) {
