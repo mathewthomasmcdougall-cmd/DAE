@@ -2175,16 +2175,21 @@ blockquote {
   grid-template-columns: minmax(300px, 0.82fr) minmax(520px, 1.18fr);
   gap: clamp(40px, 5vw, 86px);
   align-items: start;
+  width: min(100% - 12px, var(--hero-rail));
   overflow: hidden;
-  margin-top: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0 0 26px 26px;
+  margin-top: 0;
+  padding-top: 116px;
+  padding-bottom: 108px;
+  border-radius: 0;
   background:
-    radial-gradient(circle at 18% 12%, rgba(0, 103, 244, 0.24), transparent 38%),
-    radial-gradient(circle at 86% 34%, rgba(92, 247, 187, 0.11), transparent 34%),
-    linear-gradient(135deg, #050612 0%, #0b1030 48%, #040510 100%);
+    radial-gradient(86% 72% at 50% 8%, rgba(0, 103, 244, 0.2), transparent 62%),
+    radial-gradient(72% 74% at 18% 42%, rgba(31, 38, 170, 0.2), transparent 68%),
+    radial-gradient(64% 60% at 86% 44%, rgba(92, 247, 187, 0.09), transparent 64%),
+    linear-gradient(180deg, #050612 0%, #080a20 44%, #02020d 100%),
+    #02020d;
   color: var(--white);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.05), 0 28px 90px rgba(2, 2, 13, 0.22);
+  box-shadow: none;
+  isolation: isolate;
 }
 
 .faq::before {
@@ -2193,20 +2198,24 @@ blockquote {
   z-index: 0;
   content: "";
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.16));
-  opacity: 0.34;
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.18) 72%, transparent);
+  opacity: 0.28;
+  pointer-events: none;
 }
 
 .faq::after {
   position: absolute;
-  inset: auto -20% -36% 38%;
-  height: 320px;
+  inset: auto 0 -1px;
+  z-index: 0;
+  height: 220px;
   content: "";
-  background: radial-gradient(circle, rgba(92, 247, 187, 0.13), transparent 62%);
-  filter: blur(38px);
+  background:
+    linear-gradient(180deg, transparent, rgba(2, 2, 13, 0.76)),
+    radial-gradient(80% 42% at 50% 100%, rgba(92, 247, 187, 0.1), transparent 72%),
+    radial-gradient(70% 46% at 18% 76%, rgba(0, 103, 244, 0.14), transparent 70%);
   pointer-events: none;
 }
 
@@ -2343,10 +2352,10 @@ blockquote {
   overflow: hidden;
   border-radius: 0 0 6px 6px;
   background:
-    radial-gradient(86% 72% at 50% 8%, rgba(0, 103, 244, 0.22), transparent 62%),
-    radial-gradient(72% 74% at 18% 40%, rgba(31, 38, 170, 0.22), transparent 68%),
-    radial-gradient(64% 60% at 86% 42%, rgba(92, 247, 187, 0.1), transparent 64%),
-    linear-gradient(180deg, #050612 0%, #080a20 42%, #02020d 100%),
+    radial-gradient(86% 72% at 50% 0%, rgba(0, 103, 244, 0.2), transparent 62%),
+    radial-gradient(72% 74% at 18% 34%, rgba(31, 38, 170, 0.2), transparent 68%),
+    radial-gradient(64% 60% at 86% 38%, rgba(92, 247, 187, 0.09), transparent 64%),
+    linear-gradient(180deg, #02020d 0%, #080a20 28%, #02020d 100%),
     #02020d;
   color: var(--white);
   isolation: isolate;
@@ -2361,7 +2370,7 @@ blockquote {
     linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 44px 44px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.14) 78%, transparent);
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.16) 78%, transparent);
   opacity: 0.28;
   pointer-events: none;
 }
@@ -2372,8 +2381,8 @@ blockquote {
   z-index: 0;
   content: "";
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 14%),
-    radial-gradient(80% 36% at 50% 0%, rgba(92, 247, 187, 0.12), transparent 72%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 18%),
+    radial-gradient(80% 36% at 50% 0%, rgba(92, 247, 187, 0.09), transparent 72%);
   pointer-events: none;
 }
 
@@ -2387,8 +2396,8 @@ blockquote {
   display: grid;
   place-items: center;
   gap: 24px;
-  min-height: 390px;
-  padding: 96px 14px 76px;
+  min-height: 370px;
+  padding: 82px 14px 74px;
   overflow: hidden;
   color: var(--white);
   text-align: center;
@@ -2400,7 +2409,7 @@ blockquote {
   height: 1px;
   content: "";
   background: linear-gradient(90deg, transparent, rgba(92, 247, 187, 0.34), rgba(118, 185, 252, 0.18), transparent);
-  opacity: 0.66;
+  opacity: 0.32;
   pointer-events: none;
 }
 
