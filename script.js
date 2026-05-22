@@ -76,13 +76,14 @@ const observer = new IntersectionObserver(
 counters.forEach((counter) => observer.observe(counter));
 
 const initLiquidHeroBackground = (canvas) => {
-  const ctx = canvas?.getContext("2d", { alpha: false });
+  const ctx = canvas?.getContext("2d", { alpha: false, desynchronized: true });
   if (!canvas || !ctx) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const state = {
     animationFrame: null,
     height: 0,
+    inView: false,
     lastFrame: 0,
     running: false,
     width: 0,
@@ -90,10 +91,8 @@ const initLiquidHeroBackground = (canvas) => {
 
   const palette = {
     black: "#02020d",
-    deepBlue: "#070832",
-    inkBlue: "#11165f",
+    deepBlue: "#0c0e4b",
     richBlue: "#1f26aa",
-    electricBlue: "rgba(0, 103, 244,",
     skyBlue: "rgba(118, 185, 252,",
     mint: "rgba(92, 247, 187,",
     white: "rgba(255, 255, 255,",
@@ -110,14 +109,16 @@ const initLiquidHeroBackground = (canvas) => {
 
   const resize = () => {
     const rect = canvas.getBoundingClientRect();
-    const dpr = clamp(window.devicePixelRatio || 1, 1, 1.5);
-    const width = Math.max(1, Math.floor(rect.width * dpr));
-    const height = Math.max(1, Math.floor(rect.height * dpr));
+    const renderScale = window.innerWidth >= 1600 ? 0.54 : window.innerWidth >= 900 ? 0.62 : 0.76;
+    const dpr = clamp(window.devicePixelRatio || 1, 1, 1);
+    const width = Math.max(1, Math.min(1440, Math.floor(rect.width * dpr * renderScale)));
+    const height = Math.max(1, Math.min(760, Math.floor(rect.height * dpr * renderScale)));
 
     if (canvas.width === width && canvas.height === height) return;
 
     canvas.width = width;
     canvas.height = height;
+    ctx.imageSmoothingEnabled = true;
     state.width = width;
     state.height = height;
   };
@@ -126,14 +127,14 @@ const initLiquidHeroBackground = (canvas) => {
     const base = ctx.createLinearGradient(0, 0, width, height);
     base.addColorStop(0, palette.black);
     base.addColorStop(0.42, palette.deepBlue);
-    base.addColorStop(0.76, palette.inkBlue);
+    base.addColorStop(0.76, palette.richBlue);
     base.addColorStop(1, palette.black);
     ctx.fillStyle = base;
     ctx.fillRect(0, 0, width, height);
 
     const glow = ctx.createRadialGradient(width * 0.72, height * 0.46, 0, width * 0.72, height * 0.46, width * 0.74);
-    glow.addColorStop(0, `${palette.skyBlue} 0.22)`);
-    glow.addColorStop(0.38, "rgba(31, 38, 170, 0.36)");
+    glow.addColorStop(0, `${palette.skyBlue} 0.2)`);
+    glow.addColorStop(0.38, "rgba(31, 38, 170, 0.32)");
     glow.addColorStop(1, "rgba(2, 2, 13, 0)");
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, width, height);
@@ -144,51 +145,6 @@ const initLiquidHeroBackground = (canvas) => {
     leftDepth.addColorStop(1, "rgba(2, 2, 13, 0)");
     ctx.fillStyle = leftDepth;
     ctx.fillRect(0, 0, width, height);
-  };
-
-  const drawPaperShaderMesh = (width, height, time) => {
-    ctx.save();
-    ctx.globalCompositeOperation = "screen";
-    ctx.filter = `blur(${Math.max(28, width * 0.026)}px)`;
-
-    const anchors = [
-      {
-        x: 0.32 + Math.sin(time * 0.18) * 0.1,
-        y: 0.34 + Math.cos(time * 0.14) * 0.08,
-        radius: 0.54,
-        color: (alpha) => `${palette.electricBlue} ${alpha})`,
-        alpha: 0.28,
-      },
-      {
-        x: 0.72 + Math.cos(time * 0.13 + 1.7) * 0.12,
-        y: 0.42 + Math.sin(time * 0.17 + 0.8) * 0.1,
-        radius: 0.62,
-        color: (alpha) => `${palette.skyBlue} ${alpha})`,
-        alpha: 0.2,
-      },
-      {
-        x: 0.48 + Math.sin(time * 0.11 + 2.4) * 0.16,
-        y: 0.68 + Math.cos(time * 0.16 + 1.1) * 0.09,
-        radius: 0.42,
-        color: (alpha) => `${palette.mint} ${alpha})`,
-        alpha: 0.12,
-      },
-    ];
-
-    anchors.forEach((anchor) => {
-      const x = anchor.x * width;
-      const y = anchor.y * height;
-      const radius = anchor.radius * width;
-      const mesh = ctx.createRadialGradient(x, y, 0, x, y, radius);
-      mesh.addColorStop(0, anchor.color(anchor.alpha));
-      mesh.addColorStop(0.36, anchor.color(anchor.alpha * 0.52));
-      mesh.addColorStop(0.72, anchor.color(anchor.alpha * 0.14));
-      mesh.addColorStop(1, "rgba(2, 2, 13, 0)");
-      ctx.fillStyle = mesh;
-      ctx.fillRect(0, 0, width, height);
-    });
-
-    ctx.restore();
   };
 
   const drawLiquidBand = ({ alpha, amplitude, color, frequency, offset, phase, thickness, width, height }) => {
@@ -319,79 +275,6 @@ const initLiquidHeroBackground = (canvas) => {
     ctx.restore();
   };
 
-  const drawDotOrbit = (width, height, time) => {
-    const orbitSets = [
-      {
-        x: width * 0.72,
-        y: height * 0.46,
-        radius: Math.min(width, height) * 0.34,
-        dots: 26,
-        speed: 0.1,
-        alpha: 0.2,
-        color: (alpha) => `${palette.skyBlue} ${alpha})`,
-      },
-      {
-        x: width * 0.5,
-        y: height * 0.56,
-        radius: Math.min(width, height) * 0.48,
-        dots: 34,
-        speed: -0.07,
-        alpha: 0.14,
-        color: (alpha) => `${palette.mint} ${alpha})`,
-      },
-      {
-        x: width * 0.27,
-        y: height * 0.62,
-        radius: Math.min(width, height) * 0.28,
-        dots: 18,
-        speed: 0.13,
-        alpha: 0.12,
-        color: (alpha) => `${palette.electricBlue} ${alpha})`,
-      },
-    ];
-
-    ctx.save();
-    ctx.globalCompositeOperation = "screen";
-    ctx.lineWidth = 1;
-
-    orbitSets.forEach((orbit, orbitIndex) => {
-      const breathing = 1 + Math.sin(time * 0.22 + orbitIndex) * 0.045;
-      const radiusX = orbit.radius * breathing * (1.26 + orbitIndex * 0.08);
-      const radiusY = orbit.radius * breathing * (0.5 + orbitIndex * 0.04);
-      const rotation = -0.24 + orbitIndex * 0.18 + Math.sin(time * 0.08 + orbitIndex) * 0.06;
-
-      ctx.save();
-      ctx.translate(orbit.x, orbit.y);
-      ctx.rotate(rotation);
-
-      ctx.beginPath();
-      ctx.ellipse(0, 0, radiusX, radiusY, 0, 0, Math.PI * 2);
-      ctx.strokeStyle = orbit.color(orbit.alpha * 0.12);
-      ctx.stroke();
-
-      for (let index = 0; index < orbit.dots; index += 1) {
-        const progress = index / orbit.dots;
-        const angle = progress * Math.PI * 2 + time * orbit.speed;
-        const shimmer = 0.45 + Math.sin(time * 1.8 + index * 0.74 + orbitIndex) * 0.55;
-        const dotAlpha = orbit.alpha * (0.22 + shimmer * 0.44);
-        const dotRadius = 0.8 + shimmer * 1.15;
-        const x = Math.cos(angle) * radiusX;
-        const y = Math.sin(angle) * radiusY;
-
-        ctx.beginPath();
-        ctx.fillStyle = orbit.color(dotAlpha);
-        ctx.shadowColor = orbit.color(dotAlpha * 0.9);
-        ctx.shadowBlur = 8 + shimmer * 10;
-        ctx.arc(x, y, dotRadius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      ctx.restore();
-    });
-
-    ctx.restore();
-  };
-
   const drawVignette = (width, height) => {
     ctx.save();
     ctx.globalCompositeOperation = "multiply";
@@ -413,12 +296,9 @@ const initLiquidHeroBackground = (canvas) => {
 
   const render = (now = performance.now()) => {
     if (!state.running) return;
-    if (document.hidden) {
-      state.animationFrame = requestAnimationFrame(render);
-      return;
-    }
+    if (document.hidden || !state.inView) return;
 
-    if (now - state.lastFrame < 33) {
+    if (now - state.lastFrame < 34) {
       state.animationFrame = requestAnimationFrame(render);
       return;
     }
@@ -427,10 +307,9 @@ const initLiquidHeroBackground = (canvas) => {
     resize();
 
     const { width, height } = state;
-    const time = now * 0.00132;
+    const time = now * 0.00115;
 
     drawBase(width, height);
-    drawPaperShaderMesh(width, height, time);
     drawShadowBand({
       alpha: 0.68 + Math.sin(time * 0.18) * 0.08,
       amplitude: height * 0.12,
@@ -499,7 +378,6 @@ const initLiquidHeroBackground = (canvas) => {
       width,
     });
     drawBeams(width, height, time);
-    drawDotOrbit(width, height, time);
     drawVignette(width, height);
 
     state.animationFrame = requestAnimationFrame(render);
@@ -537,12 +415,31 @@ const initLiquidHeroBackground = (canvas) => {
 
   resizeObserver.observe(canvas);
   reduceMotion.addEventListener("change", () => (reduceMotion.matches ? stop() : start()));
+
+  if ("IntersectionObserver" in window) {
+    const canvasObserver = new IntersectionObserver(
+      ([entry]) => {
+        state.inView = entry.isIntersecting;
+        if (entry.isIntersecting && !reduceMotion.matches) start();
+        else stop();
+      },
+      { rootMargin: "220px 0px" }
+    );
+
+    canvasObserver.observe(canvas);
+  } else {
+    state.inView = true;
+  }
+
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) return;
-    if (!reduceMotion.matches) start();
+    if (document.hidden) stop();
+    else if (state.inView && !reduceMotion.matches) start();
   });
 
-  start();
+  resize();
+  drawBase(state.width, state.height);
+  drawVignette(state.width, state.height);
+  if (!reduceMotion.matches && state.inView) start();
 };
 
 initLiquidHeroBackground(liquidHeroCanvas);
