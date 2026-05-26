@@ -9,8 +9,7 @@ const leadModal = document.querySelector("[data-lead-modal]");
 const leadForm = document.querySelector("[data-lead-form]");
 const leadFormStatus = document.querySelector("[data-lead-form-status]");
 const closeLeadModalButtons = document.querySelectorAll("[data-close-lead-modal]");
-// Paste the deployed Google Apps Script Web App URL here once the Sheet webhook is published.
-const leadFormEndpoint = "";
+const leadFormEndpoint = "https://script.google.com/macros/s/AKfycbzfJxLwa5iZa89E_SeCKuuF3IAItktmoAnA8CnBjWt-9teNO6pkkiYIaSJDe9V4dPEz/exec";
 let lastFocusedElement = null;
 
 // TODO: Replace this temporary Apps Script webhook with a dedicated booking form or calendar integration.
