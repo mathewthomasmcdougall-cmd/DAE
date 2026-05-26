@@ -1494,14 +1494,12 @@ p {
 }
 
 .performance-guarantee {
-  width: calc(100% - 12px);
+  width: 100%;
   max-width: none;
   margin: 0 auto;
-  padding: 0 max(14px, calc((100vw - var(--hero-rail)) / 2)) 98px;
-  border-radius: 0 0 4px 4px;
-  background:
-    radial-gradient(80% 72% at 84% 0%, rgba(92, 247, 187, 0.08), transparent 58%),
-    linear-gradient(180deg, #02020d 0%, #05071c 100%);
+  padding: 72px max(14px, calc((100vw - var(--hero-rail)) / 2)) 98px;
+  border-radius: 0;
+  background: var(--white);
   color: var(--white);
 }
 
@@ -3217,6 +3215,7 @@ blockquote {
 
   .performance-guarantee {
     padding-inline: 14px;
+    padding-top: 46px;
     padding-bottom: 66px;
   }
 
