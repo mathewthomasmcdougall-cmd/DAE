@@ -1,3 +1,4 @@
+const SPREADSHEET_ID = "1V2XOLEd9ORDwmfqBDtsrmQK4AK1xLIfytXhyIza8lLA";
 const SHEET_NAME = "DAE Leads";
 
 function doPost(event) {
@@ -23,7 +24,7 @@ function doPost(event) {
 }
 
 function getLeadSheet() {
-  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
   const sheet = spreadsheet.getSheetByName(SHEET_NAME) || spreadsheet.insertSheet(SHEET_NAME);
 
   if (sheet.getLastRow() === 0) {
