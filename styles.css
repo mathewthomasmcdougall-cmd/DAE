@@ -551,6 +551,10 @@ p {
 .os-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
+  grid-template-areas:
+    "funnel ai"
+    "funnel ads"
+    "workflow workflow";
   gap: 8px;
   padding: 8px 0 0;
 }
@@ -569,11 +573,20 @@ p {
 }
 
 .funnel-card {
-  grid-row: span 2;
+  grid-area: funnel;
+}
+
+.ai-card {
+  grid-area: ai;
+}
+
+.ad-card {
+  grid-area: ads;
+  min-height: 126px;
 }
 
 .workflow-card {
-  grid-column: 1 / -1;
+  grid-area: workflow;
 }
 
 .card-label {
@@ -3169,10 +3182,17 @@ blockquote {
     grid-template-columns: 1fr;
   }
 
+  .os-grid {
+    grid-template-areas: none;
+  }
+
   .funnel-card,
+  .ai-card,
+  .ad-card,
   .workflow-card {
     grid-column: auto;
     grid-row: auto;
+    grid-area: auto;
   }
 
   .floating-card {
