@@ -73,8 +73,9 @@ leadForm?.addEventListener("submit", async (event) => {
       [
         `First Name: ${payload.firstName}`,
         `Last Name: ${payload.lastName}`,
+        `Dental Practice Owner: ${payload.isPracticeOwner}`,
         `Clinic Name: ${payload.clinicName}`,
-        `Rough Monthly Ad Spend: ${payload.monthlyAdSpend}`,
+        `Monthly Revenue: ${payload.monthlyRevenue}`,
         `Page URL: ${payload.pageUrl}`,
       ].join("\n")
     );

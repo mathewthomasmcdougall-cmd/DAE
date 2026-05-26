@@ -598,18 +598,31 @@
               <input name="lastName" type="text" autocomplete="family-name" required />
             </label>
           </div>
+          <fieldset class="lead-form__fieldset">
+            <legend>Are you a Dental Practice Owner?</legend>
+            <div class="lead-form__radio-group">
+              <label class="lead-form__radio">
+                <input name="isPracticeOwner" type="radio" value="Yes" required />
+                <span>Yes</span>
+              </label>
+              <label class="lead-form__radio">
+                <input name="isPracticeOwner" type="radio" value="No" required />
+                <span>No</span>
+              </label>
+            </div>
+          </fieldset>
           <label>
             <span>Clinic Name</span>
             <input name="clinicName" type="text" autocomplete="organization" required />
           </label>
           <label>
-            <span>Rough Monthly Ad Spend</span>
-            <select name="monthlyAdSpend" required>
+            <span>Which best describes your monthly revenue?</span>
+            <select name="monthlyRevenue" required>
               <option value="">Select a range</option>
-              <option value="$0 - $5k">$0 - $5k</option>
-              <option value="$5k - $15k">$5k - $15k</option>
-              <option value="$15k - $30k">$15k - $30k</option>
-              <option value="$30k+">$30k+</option>
+              <option value="Less than $100k">Less than 100k</option>
+              <option value="$100k - $200k">$100k - $200k</option>
+              <option value="$200k - $500k">$200k - $500k</option>
+              <option value="$500k+">$500k+</option>
             </select>
           </label>
           <input name="pageUrl" type="hidden" />

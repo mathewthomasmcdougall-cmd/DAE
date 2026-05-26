@@ -8,8 +8,9 @@ function doPost(event) {
     new Date(),
     payload.firstName || "",
     payload.lastName || "",
+    payload.isPracticeOwner || "",
     payload.clinicName || "",
-    payload.monthlyAdSpend || "",
+    payload.monthlyRevenue || "",
     payload.pageUrl || "",
     payload.submittedAt || "",
   ]);
@@ -28,8 +29,9 @@ function getLeadSheet() {
       "Received At",
       "First Name",
       "Last Name",
+      "Dental Practice Owner",
       "Clinic Name",
-      "Rough Monthly Ad Spend",
+      "Monthly Revenue",
       "Page URL",
       "Submitted At",
     ]);

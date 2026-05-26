@@ -2661,6 +2661,73 @@ blockquote {
   gap: 14px;
 }
 
+.lead-form__fieldset {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.lead-form__fieldset legend {
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.lead-form__radio-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.lead-form__radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 15px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.075);
+  cursor: pointer;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.lead-form__radio:hover {
+  border-color: rgba(92, 247, 187, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lead-form__radio:focus-within {
+  border-color: rgba(92, 247, 187, 0.52);
+  box-shadow: 0 0 0 4px rgba(92, 247, 187, 0.1);
+}
+
+.lead-form__radio:has(input:checked) {
+  border-color: rgba(92, 247, 187, 0.58);
+  background: rgba(92, 247, 187, 0.12);
+  box-shadow: 0 16px 42px rgba(92, 247, 187, 0.1);
+}
+
+.lead-form__radio input {
+  width: 16px;
+  height: 16px;
+  accent-color: #5cf7bb;
+  cursor: pointer;
+}
+
+.lead-form__radio span {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
 .lead-form span {
   color: rgba(255, 255, 255, 0.74);
   font-size: 13px;
@@ -2669,7 +2736,7 @@ blockquote {
   text-transform: uppercase;
 }
 
-.lead-form input,
+.lead-form input:not([type="radio"]),
 .lead-form select {
   width: 100%;
   min-height: 52px;
@@ -2687,7 +2754,7 @@ blockquote {
   color-scheme: dark;
 }
 
-.lead-form input:focus,
+.lead-form input:not([type="radio"]):focus,
 .lead-form select:focus {
   border-color: rgba(92, 247, 187, 0.52);
   background: rgba(255, 255, 255, 0.1);
@@ -3267,6 +3334,10 @@ blockquote {
   }
 
   .lead-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lead-form__radio-group {
     grid-template-columns: 1fr;
   }
 
