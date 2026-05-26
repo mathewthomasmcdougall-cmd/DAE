@@ -1499,10 +1499,7 @@ p {
   margin: 0 auto;
   padding: 72px max(14px, calc((100vw - var(--hero-rail)) / 2)) 88px;
   border-radius: 4px 4px 0 0;
-  background:
-    radial-gradient(circle at 80% 16%, rgba(118, 185, 252, 0.16), transparent 30%),
-    radial-gradient(circle at 18% 82%, rgba(92, 247, 187, 0.11), transparent 29%),
-    linear-gradient(180deg, #ffffff 0%, #f8fbff 56%, #ffffff 100%);
+  background: #ffffff;
   color: var(--white);
 }
 
@@ -1523,7 +1520,7 @@ p {
     radial-gradient(circle at 82% 20%, rgba(92, 247, 187, 0.12), transparent 36%),
     radial-gradient(circle at 18% 82%, rgba(31, 38, 170, 0.26), transparent 46%),
     linear-gradient(180deg, rgba(12, 15, 48, 0.98), rgba(2, 2, 13, 0.98));
-  box-shadow: 0 18px 48px rgba(2, 2, 13, 0.14), inset 0 1px rgba(255, 255, 255, 0.075);
+  box-shadow: 0 18px 42px rgba(2, 2, 13, 0.08), inset 0 1px rgba(255, 255, 255, 0.075);
 }
 
 .guarantee-card::before {
