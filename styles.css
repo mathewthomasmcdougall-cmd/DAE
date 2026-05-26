@@ -2384,6 +2384,18 @@ blockquote {
   background: rgba(92, 247, 187, 0.11);
 }
 
+.footer-cta .footer-guarantee {
+  max-width: 760px;
+  margin: -6px auto 0;
+  padding: 11px 16px;
+  border: 1px solid rgba(92, 247, 187, 0.13);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
 .footer-main {
   position: relative;
   display: grid;
