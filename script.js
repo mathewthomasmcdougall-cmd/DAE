@@ -9,7 +9,7 @@ const leadModal = document.querySelector("[data-lead-modal]");
 const leadForm = document.querySelector("[data-lead-form]");
 const leadFormStatus = document.querySelector("[data-lead-form-status]");
 const closeLeadModalButtons = document.querySelectorAll("[data-close-lead-modal]");
-const leadFormEndpoint = "https://script.google.com/macros/s/AKfycbzfJxLwa5iZa89E_SeCKuuF3IAItktmoAnA8CnBjWt-9teNO6pkkiYIaSJDe9V4dPEz/exec";
+const leadFormEndpoint = "https://script.google.com/macros/s/AKfycbzeoG45oLE342-7LB0fN-LWUn8_qi7qPLvI5ZMlQXukWxFlvR64kAw9fDMyf4vAVKzU/exec";
 let lastFocusedElement = null;
 
 // TODO: Replace this temporary Apps Script webhook with a dedicated booking form or calendar integration.
