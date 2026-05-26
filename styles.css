@@ -1523,7 +1523,7 @@ p {
     radial-gradient(circle at 82% 20%, rgba(92, 247, 187, 0.12), transparent 36%),
     radial-gradient(circle at 18% 82%, rgba(31, 38, 170, 0.26), transparent 46%),
     linear-gradient(180deg, rgba(12, 15, 48, 0.98), rgba(2, 2, 13, 0.98));
-  box-shadow: 0 28px 90px rgba(2, 2, 13, 0.34), inset 0 1px rgba(255, 255, 255, 0.075);
+  box-shadow: 0 18px 48px rgba(2, 2, 13, 0.14), inset 0 1px rgba(255, 255, 255, 0.075);
 }
 
 .guarantee-card::before {
