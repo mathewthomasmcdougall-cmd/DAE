@@ -563,6 +563,45 @@
       </div>
     </footer>
 
+    <div class="lead-modal" data-lead-modal aria-hidden="true">
+      <div class="lead-modal__backdrop" data-close-lead-modal></div>
+      <section class="lead-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+        <button class="lead-modal__close" type="button" data-close-lead-modal aria-label="Close growth audit form">×</button>
+        <p class="eyebrow light">Private Growth Audit</p>
+        <h2 id="lead-modal-title">Tell Us About Your Clinic</h2>
+        <p>Share a few details and we’ll review where your acquisition, qualification, and booking process may be leaking consultations.</p>
+        <form class="lead-form" data-lead-form>
+          <div class="lead-form__grid">
+            <label>
+              <span>First Name</span>
+              <input name="firstName" type="text" autocomplete="given-name" required />
+            </label>
+            <label>
+              <span>Last Name</span>
+              <input name="lastName" type="text" autocomplete="family-name" required />
+            </label>
+          </div>
+          <label>
+            <span>Clinic Name</span>
+            <input name="clinicName" type="text" autocomplete="organization" required />
+          </label>
+          <label>
+            <span>Rough Monthly Ad Spend</span>
+            <select name="monthlyAdSpend" required>
+              <option value="">Select a range</option>
+              <option value="$0 - $5k">$0 - $5k</option>
+              <option value="$5k - $15k">$5k - $15k</option>
+              <option value="$15k - $30k">$15k - $30k</option>
+              <option value="$30k+">$30k+</option>
+            </select>
+          </label>
+          <input name="pageUrl" type="hidden" />
+          <button class="button light-button lead-form__submit" type="submit">Request Audit <span></span></button>
+          <p class="lead-form__status" data-lead-form-status role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </div>
+
     <script src="./script.js"></script>
   </body>
 </html>

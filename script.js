@@ -5,11 +5,108 @@ const mobileMenu = document.querySelector("[data-mobile-menu]");
 const counters = document.querySelectorAll("[data-count]");
 const liquidHeroCanvas = document.querySelector("[data-liquid-hero-canvas]");
 const launchCtaLinks = document.querySelectorAll("[data-launch-cta]");
-const launchCtaHref = "mailto:matt@getdae.com?subject=DAE%20Private%20Growth%20Audit";
+const leadModal = document.querySelector("[data-lead-modal]");
+const leadForm = document.querySelector("[data-lead-form]");
+const leadFormStatus = document.querySelector("[data-lead-form-status]");
+const closeLeadModalButtons = document.querySelectorAll("[data-close-lead-modal]");
+// Paste the deployed Google Apps Script Web App URL here once the Sheet webhook is published.
+const leadFormEndpoint = "";
+let lastFocusedElement = null;
 
-// TODO: Replace temporary mailto CTA flow with dedicated booking form or calendar integration.
+// TODO: Replace this temporary Apps Script webhook with a dedicated booking form or calendar integration.
 launchCtaLinks.forEach((link) => {
-  link.setAttribute("href", launchCtaHref);
+  link.setAttribute("href", "#growth-audit");
+  link.setAttribute("role", "button");
+});
+
+const setLeadFormStatus = (message, state = "") => {
+  if (!leadFormStatus) return;
+  leadFormStatus.textContent = message;
+  leadFormStatus.dataset.state = state;
+};
+
+const openLeadModal = (trigger) => {
+  if (!leadModal || !leadForm) return;
+  lastFocusedElement = trigger || document.activeElement;
+  leadModal.classList.add("is-open");
+  leadModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  leadForm.elements.pageUrl.value = window.location.href;
+  setLeadFormStatus("");
+  window.requestAnimationFrame(() => leadForm.querySelector("input, select, button")?.focus());
+};
+
+const closeLeadModal = () => {
+  if (!leadModal) return;
+  leadModal.classList.remove("is-open");
+  leadModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  setLeadFormStatus("");
+  lastFocusedElement?.focus?.();
+};
+
+launchCtaLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    openLeadModal(link);
+  });
+});
+
+closeLeadModalButtons.forEach((button) => {
+  button.addEventListener("click", closeLeadModal);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && leadModal?.classList.contains("is-open")) closeLeadModal();
+});
+
+leadForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const submitButton = leadForm.querySelector("[type='submit']");
+  const formData = new FormData(leadForm);
+  const payload = Object.fromEntries(formData.entries());
+
+  if (!leadFormEndpoint) {
+    const subject = encodeURIComponent("DAE Private Growth Audit");
+    const body = encodeURIComponent(
+      [
+        `First Name: ${payload.firstName}`,
+        `Last Name: ${payload.lastName}`,
+        `Clinic Name: ${payload.clinicName}`,
+        `Rough Monthly Ad Spend: ${payload.monthlyAdSpend}`,
+        `Page URL: ${payload.pageUrl}`,
+      ].join("\n")
+    );
+
+    window.location.href = `mailto:matt@getdae.com?subject=${subject}&body=${body}`;
+    setLeadFormStatus("Opening your email app as a temporary fallback.", "loading");
+    return;
+  }
+
+  submitButton.disabled = true;
+  setLeadFormStatus("Sending your audit request...", "loading");
+
+  try {
+    await fetch(leadFormEndpoint, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      body: JSON.stringify({
+        ...payload,
+        submittedAt: new Date().toISOString(),
+      }),
+    });
+
+    leadForm.reset();
+    setLeadFormStatus("Thank you. Your audit request has been received.", "success");
+  } catch (error) {
+    setLeadFormStatus("Something went wrong. Please try again or email matt@getdae.com.", "error");
+  } finally {
+    submitButton.disabled = false;
+  }
 });
 
 const setHeaderState = () => {
