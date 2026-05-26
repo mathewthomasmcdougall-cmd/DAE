@@ -3,18 +3,18 @@
   isolation: isolate;
   width: calc(100% - 12px);
   max-width: none;
-  margin: 0 auto;
-  padding: 120px max(18px, calc((100vw - var(--hero-rail)) / 2)) 112px;
+  margin: -1px auto 0;
+  padding: 121px max(18px, calc((100vw - var(--hero-rail)) / 2)) 112px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 80% 16%, rgba(118, 185, 252, 0.16), transparent 30%),
-    radial-gradient(circle at 18% 82%, rgba(92, 247, 187, 0.11), transparent 29%),
-    linear-gradient(180deg, #ffffff 0%, #f8fbff 56%, #ffffff 100%);
+    radial-gradient(circle at 80% 32%, rgba(118, 185, 252, 0.16), transparent 30%),
+    radial-gradient(circle at 18% 78%, rgba(92, 247, 187, 0.11), transparent 29%),
+    linear-gradient(180deg, #ffffff 0%, #ffffff 10%, #f8fbff 58%, #ffffff 100%);
 }
 
 .infrastructure-metrics::before {
   position: absolute;
-  inset: 0;
+  inset: 72px 0 0;
   z-index: -1;
   content: "";
   background-image:
