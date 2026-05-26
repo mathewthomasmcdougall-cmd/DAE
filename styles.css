@@ -1499,7 +1499,10 @@ p {
   margin: 0 auto;
   padding: 72px max(14px, calc((100vw - var(--hero-rail)) / 2)) 88px;
   border-radius: 4px 4px 0 0;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  background:
+    radial-gradient(circle at 80% 16%, rgba(118, 185, 252, 0.16), transparent 30%),
+    radial-gradient(circle at 18% 82%, rgba(92, 247, 187, 0.11), transparent 29%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 56%, #ffffff 100%);
   color: var(--white);
 }
 
