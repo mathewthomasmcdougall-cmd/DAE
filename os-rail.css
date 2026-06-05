@@ -297,8 +297,50 @@
 
 @media (max-width: 809px) {
   .os-rail-system {
-    padding: 20px;
+    padding: 18px;
     border-radius: 22px;
+  }
+
+  .os-rail {
+    gap: 10px;
+  }
+
+  .os-stage,
+  .os-stage-primary {
+    padding: 16px 14px 15px;
+    border-radius: 16px;
+  }
+
+  .os-stage::before {
+    top: 25px;
+    left: 24px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .stage-number {
+    width: 34px;
+    height: 24px;
+    margin-bottom: 18px;
+    margin-left: 22px;
+  }
+
+  .os-stage h3 {
+    font-size: 18px;
+  }
+
+  .os-stage p {
+    font-size: 13px;
+  }
+
+  .stage-utility {
+    margin-top: 12px;
+    padding: 11px;
+    border-radius: 13px;
+  }
+
+  .stage-utility::before {
+    display: none;
   }
 }
 

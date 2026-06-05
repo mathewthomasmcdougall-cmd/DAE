@@ -3176,30 +3176,103 @@ blockquote {
 }
 
 @media (max-width: 809px) {
+  :root {
+    --hero-rail: calc(100vw - 24px);
+  }
+
   .announcement {
     min-height: 34px;
   }
 
+  .announcement a {
+    font-size: 11px;
+    letter-spacing: 0.07em;
+  }
+
+  .site-header {
+    top: 42px;
+    width: calc(100vw - 20px);
+    height: 62px;
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+
+  .site-header.is-scrolled {
+    border-radius: 12px;
+  }
+
+  .brand-logo {
+    width: 104px;
+  }
+
+  .menu-button {
+    width: 42px;
+    height: 42px;
+  }
+
+  .mobile-menu {
+    top: 112px;
+    left: 10px;
+    right: 10px;
+    padding: 12px 18px;
+    border-radius: 14px;
+  }
+
   .hero {
     width: calc(100% - 12px);
-    margin-top: 46px;
-    padding: 138px 14px 54px;
+    min-height: auto;
+    margin-top: 42px;
+    padding: 108px 14px 38px;
+    border-radius: 0 0 18px 18px;
   }
 
   .hero-spacer {
-    height: 18px;
+    height: 0;
+  }
+
+  .hero-content {
+    gap: 34px;
+    width: calc(100vw - 40px);
+    max-width: calc(100vw - 40px);
+    margin-inline: 0;
+    overflow: hidden;
+  }
+
+  .hero-copy {
+    gap: 18px;
+    padding-right: 2px;
+  }
+
+  .eyebrow {
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+
+  .hero-copy .eyebrow {
+    max-width: 280px;
+    line-height: 1.35;
   }
 
   h1 {
-    font-size: 38px;
+    max-width: 340px;
+    font-size: clamp(38px, 11.8vw, 48px);
+    line-height: 0.98;
   }
 
   h2 {
-    font-size: 28px;
+    font-size: clamp(30px, 8.8vw, 38px);
+    line-height: 1.04;
   }
 
   h3 {
     font-size: 20px;
+  }
+
+  p,
+  .hero-copy p {
+    max-width: calc(100% - 20px);
+    font-size: 15px;
+    line-height: 1.55;
   }
 
   .action-row,
@@ -3209,48 +3282,224 @@ blockquote {
 
   .button {
     justify-content: space-between;
+    min-height: 54px;
+    border-radius: 10px;
   }
 
   .proof-metrics {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    max-width: none;
   }
 
-  .problem-grid {
-    grid-template-columns: 1fr;
+  .proof-metrics div {
+    min-height: 92px;
+    padding: 13px 12px;
+    border-radius: 14px;
   }
 
-  .leak-dashboard {
-    padding: 12px;
+  .proof-metrics strong {
+    font-size: clamp(23px, 7vw, 30px);
   }
 
-  .pipeline-stage {
-    grid-template-columns: 60px 1fr;
+  .proof-metrics div:last-child strong {
+    font-size: 20px;
+    letter-spacing: -0.06em;
   }
 
-  .pipeline-stage b {
-    grid-column: 2;
-  }
-
-  .conversion-bridge {
-    border-radius: 18px;
+  .proof-metrics span {
+    max-width: 112px;
+    font-size: 9.5px;
+    line-height: 1.2;
   }
 
   .hero-visual {
     min-height: auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 4px auto 0;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .hero-visual::before {
+    inset: -6% -5%;
+    filter: blur(22px);
+    opacity: 0.55;
+  }
+
+  .visual-orbit {
+    inset: 2%;
+    border-radius: 24px;
+    filter: blur(20px);
+    opacity: 0.42;
   }
 
   .dashboard-frame {
+    width: 100%;
+    max-width: 100%;
     min-height: auto;
+    padding: 7px;
+    border-radius: 18px;
   }
 
-  .os-grid,
-  .ad-grid,
-  .flow-line {
-    grid-template-columns: 1fr;
+  .os-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
   }
 
   .os-grid {
-    grid-template-areas: none;
+    grid-template-columns: 1fr !important;
+    grid-template-areas: none !important;
+    gap: 7px;
+  }
+
+  .os-grid article {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    grid-area: auto !important;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .pipeline span {
+    padding: 8px 9px;
+  }
+
+  .ad-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .flow-line {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .flow-line::before,
+  .flow-line::after {
+    display: none;
+  }
+
+  .flow-line span {
+    justify-content: start;
+    min-height: 34px;
+    padding-inline: 12px;
+  }
+
+  .floating-card {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    animation: none;
+  }
+
+  .consultation-card {
+    min-width: 0;
+  }
+
+  .consultation-card strong {
+    font-size: 26px;
+  }
+
+  .logo-marquee {
+    width: 100%;
+    padding: 14px 0 22px;
+  }
+
+  .marquee-track {
+    gap: 38px;
+  }
+
+  .marquee-track span {
+    font-size: 18px;
+  }
+
+  .section {
+    width: 100%;
+    padding: 68px 18px;
+  }
+
+  .revenue-leak {
+    padding-top: 72px;
+    padding-bottom: 66px;
+  }
+
+  .revenue-copy h2 span {
+    display: inline;
+  }
+
+  .lead,
+  .revenue-copy .lead,
+  .revenue-copy .lead.secondary {
+    max-width: none;
+    font-size: 16px;
+    line-height: 1.58;
+  }
+
+  .problem-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .problem-grid article {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .leak-dashboard {
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  .leak-dashboard-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 10px 14px;
+  }
+
+  .pipeline-stage {
+    grid-template-columns: 56px 1fr;
+    gap: 10px;
+    padding: 11px;
+    border-radius: 13px;
+  }
+
+  .pipeline-stage > span {
+    height: 48px;
+    font-size: 22px;
+  }
+
+  .pipeline-stage b {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .leak-indicator {
+    justify-self: stretch;
+    text-align: left;
+  }
+
+  .revenue-loss-card {
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .revenue-loss-card strong {
+    font-size: 42px;
+  }
+
+  .conversion-bridge {
+    border-radius: 18px;
+    padding: 13px 15px;
+    font-size: 14px;
   }
 
   .funnel-card,
@@ -3274,10 +3523,6 @@ blockquote {
     height: 128px;
   }
 
-  .section {
-    padding: 60px 14px;
-  }
-
   .comparison {
     grid-template-columns: 1fr;
   }
@@ -3288,8 +3533,10 @@ blockquote {
   }
 
   .revenue-leak::before {
-    top: 12px;
-    bottom: 12px;
+    top: 0;
+    bottom: 0;
+    background-size: 26px 26px, 26px 26px, auto, auto, auto;
+    opacity: 0.78;
   }
 
   .process article {
@@ -3299,16 +3546,29 @@ blockquote {
   .operating-system {
     width: calc(100% - 12px);
     padding-inline: 14px;
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .os-section-head {
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .os-section-head h2,
+  .os-section-head p {
+    max-width: none;
   }
 
   .performance-guarantee {
     padding-inline: 14px;
-    padding-top: 46px;
-    padding-bottom: 66px;
+    padding-top: 54px;
+    padding-bottom: 58px;
   }
 
   .guarantee-card {
-    padding: 24px;
+    gap: 24px;
+    padding: 24px 18px;
     border-radius: 22px;
   }
 
@@ -3329,8 +3589,80 @@ blockquote {
     padding: 16px 16px 0;
   }
 
+  .faq {
+    width: 100%;
+    padding: 72px 18px;
+    gap: 30px;
+  }
+
+  .faq-copy h2,
+  .faq-copy > p {
+    max-width: none;
+  }
+
+  .faq-list details {
+    border-radius: 14px;
+  }
+
+  .faq-list summary {
+    min-height: 58px;
+    padding: 17px 48px 17px 16px;
+    font-size: 14px;
+  }
+
+  .faq-list summary::after {
+    right: 14px;
+  }
+
+  .faq-list details p {
+    padding: 0 16px 18px;
+    font-size: 14px;
+  }
+
+  .footer-cta {
+    width: 100%;
+    min-height: auto;
+    padding: 70px 18px 54px;
+    gap: 18px;
+  }
+
+  .footer-cta h2 {
+    max-width: 360px;
+  }
+
+  .footer-cta > p:not(.eyebrow),
+  .footer-cta .footer-guarantee {
+    max-width: 360px;
+    font-size: 14px;
+  }
+
+  .footer-cta .action-row {
+    display: grid;
+    gap: 10px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
   .footer-main {
     grid-template-columns: 1fr;
+    width: 100%;
+    gap: 28px;
+    padding: 38px 18px 34px;
+  }
+
+  .footer-brand-block .brand-logo {
+    height: 32px;
+  }
+
+  .footer-main a,
+  .footer-main p {
+    font-size: 14px;
+  }
+
+  .legal {
+    width: 100%;
+    padding: 18px 18px 34px;
+    font-size: 12px;
   }
 
   .lead-form__grid {
@@ -3343,14 +3675,55 @@ blockquote {
 
   .lead-modal {
     padding: 12px;
+    align-items: end;
   }
 
   .lead-modal__panel {
-    border-radius: 22px;
+    width: 100%;
+    max-height: calc(100dvh - 24px);
+    padding: 24px 18px;
+    overflow-y: auto;
+    border-radius: 22px 22px 14px 14px;
+  }
+
+  .lead-modal__panel h2 {
+    font-size: 30px;
   }
 
   .legal {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 {
+    max-width: 315px;
+    font-size: 39px;
+  }
+
+  .hero {
+    padding-top: 104px;
+  }
+
+  .proof-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proof-metrics div {
+    min-height: 86px;
+  }
+
+  .proof-metrics strong {
+    font-size: 24px;
+  }
+
+  .score-ring {
+    width: 116px;
+    height: 116px;
+  }
+
+  .score-ring strong {
+    font-size: 34px;
   }
 }
 

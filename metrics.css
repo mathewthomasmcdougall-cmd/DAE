@@ -328,7 +328,29 @@
 
 @media (max-width: 809px) {
   .infrastructure-metrics {
-    padding: 76px 18px 72px;
+    padding: 72px 18px 70px;
+  }
+
+  .workflow-inside {
+    gap: 30px;
+  }
+
+  .workflow-copy h2 {
+    max-width: 340px;
+  }
+
+  .workflow-copy > p:not(.eyebrow) {
+    font-size: 15.5px;
+  }
+
+  .workflow-points {
+    gap: 9px;
+    margin-top: 22px;
+  }
+
+  .workflow-points li {
+    padding: 13px 14px;
+    border-radius: 14px;
   }
 
   .workflow-stream {
@@ -367,6 +389,17 @@
   .stream-event-card {
     align-items: flex-start;
     flex-direction: column;
+    gap: 7px;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .stream-event-card h3 {
+    font-size: 16px;
+  }
+
+  .stream-event-card p {
+    font-size: 13.5px;
   }
 }
 
@@ -566,7 +599,7 @@
 
 @media (max-width: 809px) {
   .why-dae {
-    padding: 78px 18px 76px;
+    padding: 74px 18px 72px;
   }
 
   .why-dae-head,
@@ -587,13 +620,20 @@
 
   .comparison-grid article {
     min-height: auto;
+    padding: 20px;
+    border-radius: 20px;
   }
 
   .comparison-grid article > span {
-    margin-bottom: 48px;
+    margin-bottom: 36px;
   }
 
   .why-dae-closing {
     border-radius: 22px;
+    padding: 15px 16px;
+  }
+
+  .why-dae-closing p {
+    font-size: 14px;
   }
 }
