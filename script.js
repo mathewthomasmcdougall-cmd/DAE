@@ -5,9 +5,11 @@ const mobileMenu = document.querySelector("[data-mobile-menu]");
 const counters = document.querySelectorAll("[data-count]");
 const liquidHeroCanvas = document.querySelector("[data-liquid-hero-canvas]");
 const launchCtaLinks = document.querySelectorAll("[data-launch-cta]");
+const mobileLaunchCtaLinks = document.querySelectorAll("[data-mobile-launch-cta]");
 const leadModal = document.querySelector("[data-lead-modal]");
-const leadForm = document.querySelector("[data-lead-form]");
-const leadFormStatus = document.querySelector("[data-lead-form-status]");
+const leadForms = document.querySelectorAll("[data-lead-form]");
+const modalLeadForm = leadModal?.querySelector("[data-lead-form]");
+const leadForm = modalLeadForm || document.querySelector("[data-lead-form]");
 const closeLeadModalButtons = document.querySelectorAll("[data-close-lead-modal]");
 const leadFormEndpoint = "https://script.google.com/macros/s/AKfycbzeoG45oLE342-7LB0fN-LWUn8_qi7qPLvI5ZMlQXukWxFlvR64kAw9fDMyf4vAVKzU/exec";
 let lastFocusedElement = null;
@@ -18,21 +20,24 @@ launchCtaLinks.forEach((link) => {
   link.setAttribute("role", "button");
 });
 
-const setLeadFormStatus = (message, state = "") => {
+const isMobileViewport = () => window.matchMedia("(max-width: 760px)").matches;
+
+const setLeadFormStatus = (message, state = "", form = leadForm) => {
+  const leadFormStatus = form?.querySelector("[data-lead-form-status]");
   if (!leadFormStatus) return;
   leadFormStatus.textContent = message;
   leadFormStatus.dataset.state = state;
 };
 
 const openLeadModal = (trigger) => {
-  if (!leadModal || !leadForm) return;
+  if (!leadModal || !modalLeadForm) return;
   lastFocusedElement = trigger || document.activeElement;
   leadModal.classList.add("is-open");
   leadModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
-  leadForm.elements.pageUrl.value = window.location.href;
-  setLeadFormStatus("");
-  window.requestAnimationFrame(() => leadForm.querySelector("input, select, button")?.focus());
+  modalLeadForm.elements.pageUrl.value = window.location.href;
+  setLeadFormStatus("", "", modalLeadForm);
+  window.requestAnimationFrame(() => modalLeadForm.querySelector("input, select, button")?.focus());
 };
 
 const closeLeadModal = () => {
@@ -40,12 +45,20 @@ const closeLeadModal = () => {
   leadModal.classList.remove("is-open");
   leadModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
-  setLeadFormStatus("");
+  setLeadFormStatus("", "", modalLeadForm);
   lastFocusedElement?.focus?.();
 };
 
 launchCtaLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
+    event.preventDefault();
+    openLeadModal(link);
+  });
+});
+
+mobileLaunchCtaLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (!isMobileViewport()) return;
     event.preventDefault();
     openLeadModal(link);
   });
@@ -59,56 +72,59 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && leadModal?.classList.contains("is-open")) closeLeadModal();
 });
 
-leadForm?.addEventListener("submit", async (event) => {
-  event.preventDefault();
+leadForms.forEach((form) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  const submitButton = leadForm.querySelector("[type='submit']");
-  const formData = new FormData(leadForm);
-  const payload = Object.fromEntries(formData.entries());
+    const submitButton = form.querySelector("[type='submit']");
+    form.elements.pageUrl.value = window.location.href;
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
 
-  if (!leadFormEndpoint) {
-    const subject = encodeURIComponent("DAE Private Growth Audit");
-    const body = encodeURIComponent(
-      [
-        `First Name: ${payload.firstName}`,
-        `Last Name: ${payload.lastName}`,
-        `Email: ${payload.email}`,
-        `Phone Number: ${payload.phone}`,
-        `Dental Practice Owner: ${payload.isPracticeOwner}`,
-        `Clinic Name: ${payload.clinicName}`,
-        `Monthly Revenue: ${payload.monthlyRevenue}`,
-        `Page URL: ${payload.pageUrl}`,
-      ].join("\n")
-    );
+    if (!leadFormEndpoint) {
+      const subject = encodeURIComponent("DAE Private Growth Audit");
+      const body = encodeURIComponent(
+        [
+          `First Name: ${payload.firstName}`,
+          `Last Name: ${payload.lastName}`,
+          `Email: ${payload.email}`,
+          `Phone Number: ${payload.phone}`,
+          `Dental Practice Owner: ${payload.isPracticeOwner}`,
+          `Clinic Name: ${payload.clinicName}`,
+          `Monthly Revenue: ${payload.monthlyRevenue}`,
+          `Page URL: ${payload.pageUrl}`,
+        ].join("\n")
+      );
 
-    window.location.href = `mailto:matt@getdae.com?subject=${subject}&body=${body}`;
-    setLeadFormStatus("Opening your email app as a temporary fallback.", "loading");
-    return;
-  }
+      window.location.href = `mailto:matt@getdae.com?subject=${subject}&body=${body}`;
+      setLeadFormStatus("Opening your email app as a temporary fallback.", "loading", form);
+      return;
+    }
 
-  submitButton.disabled = true;
-  setLeadFormStatus("Sending your audit request...", "loading");
+    submitButton.disabled = true;
+    setLeadFormStatus("Sending your audit request...", "loading", form);
 
-  try {
-    await fetch(leadFormEndpoint, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8",
-      },
-      body: JSON.stringify({
-        ...payload,
-        submittedAt: new Date().toISOString(),
-      }),
-    });
+    try {
+      await fetch(leadFormEndpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify({
+          ...payload,
+          submittedAt: new Date().toISOString(),
+        }),
+      });
 
-    leadForm.reset();
-    setLeadFormStatus("Thank you. Your audit request has been received.", "success");
-  } catch (error) {
-    setLeadFormStatus("Something went wrong. Please try again or email matt@getdae.com.", "error");
-  } finally {
-    submitButton.disabled = false;
-  }
+      form.reset();
+      setLeadFormStatus("Thank you. Your audit request has been received.", "success", form);
+    } catch (error) {
+      setLeadFormStatus("Something went wrong. Please try again or email matt@getdae.com.", "error", form);
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
 });
 
 const setHeaderState = () => {
@@ -131,6 +147,7 @@ mobileMenu?.querySelectorAll("a").forEach((link) => {
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (event) => {
+    if (event.defaultPrevented) return;
     const hash = link.getAttribute("href");
     if (!hash || hash === "#") return;
 

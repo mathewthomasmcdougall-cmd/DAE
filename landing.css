@@ -435,17 +435,7 @@
   }
 
   .lp-form-card {
-    width: 100%;
-    max-width: 100%;
-    padding: 22px 16px;
-    border-radius: 22px;
-    overflow: hidden;
-  }
-
-  .lp-form-card h2 {
-    max-width: 310px;
-    font-size: 30px;
-    line-height: 1.02;
+    display: none;
   }
 
   .lp-strip {

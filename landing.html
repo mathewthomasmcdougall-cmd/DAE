@@ -29,7 +29,7 @@
   </head>
   <body class="lp-body">
     <div class="announcement" data-announcement>
-      <a href="#landing-form">Book a private growth audit</a>
+      <a data-mobile-launch-cta href="#landing-form">Book a private growth audit</a>
     </div>
 
     <header class="site-header" data-header>
@@ -43,7 +43,7 @@
         <a href="#lp-guarantee">Results</a>
         <a href="#lp-faq">FAQ</a>
       </nav>
-      <a class="button ghost desktop-only" href="#landing-form">Book a call <span></span></a>
+      <a class="button ghost desktop-only" data-mobile-launch-cta href="#landing-form">Book a call <span></span></a>
       <button class="menu-button" type="button" aria-label="Open navigation" data-menu-button>
         <span></span>
         <span></span>
@@ -56,7 +56,7 @@
       <a href="#lp-system">Workflow</a>
       <a href="#lp-guarantee">Results</a>
       <a href="#lp-faq">FAQ</a>
-      <a href="#landing-form">Book a call</a>
+      <a data-mobile-launch-cta href="#landing-form">Book a call</a>
     </nav>
 
     <main>
@@ -75,7 +75,7 @@
               workflows designed to turn demand into booked consultations.
             </p>
             <div class="lp-hero-actions">
-              <a class="lp-button lp-button-primary" href="#landing-form">Book a call</a>
+              <a class="lp-button lp-button-primary" data-mobile-launch-cta href="#landing-form">Book a call</a>
             </div>
             <div class="lp-proof-row" aria-label="DAE credibility indicators">
               <span><strong>$25M+</strong> Ad spend managed</span>
@@ -262,7 +262,7 @@
             we continue working at no cost until we do.
           </p>
         </div>
-        <a class="lp-button lp-button-primary" href="#landing-form">Book a call</a>
+        <a class="lp-button lp-button-primary" data-mobile-launch-cta href="#landing-form">Book a call</a>
       </section>
 
       <section class="section faq" id="lp-faq">
@@ -299,8 +299,8 @@
         <h2>We Build And Manage A Complete Implant Acquisition System For Dental Clinics.</h2>
         <p>From ad click to qualified enquiry, follow-up, appointment setting, and booked consultation — DAE connects every step into one patient acquisition system.</p>
         <div class="action-row center">
-          <a class="button light-button" href="#landing-form">Book a call <span></span></a>
-          <a class="button ghost" href="#landing-form">Request Audit <span></span></a>
+          <a class="button light-button" data-mobile-launch-cta href="#landing-form">Book a call <span></span></a>
+          <a class="button ghost" data-mobile-launch-cta href="#landing-form">Request Audit <span></span></a>
         </div>
         <p class="footer-guarantee">If we don’t generate qualified implant consultations within the agreed launch window, we continue working at no cost until we do.</p>
       </div>
@@ -327,8 +327,8 @@
         </div>
         <div>
           <h4>Get in touch</h4>
-          <a href="#landing-form">Contact</a>
-          <a href="#landing-form">Book a call</a>
+          <a data-mobile-launch-cta href="#landing-form">Contact</a>
+          <a data-mobile-launch-cta href="#landing-form">Book a call</a>
         </div>
       </div>
       <div class="legal">
@@ -336,6 +336,68 @@
         <span>Premium patient acquisition infrastructure for dental clinics.</span>
       </div>
     </footer>
+
+    <div class="lead-modal" data-lead-modal aria-hidden="true">
+      <div class="lead-modal__backdrop" data-close-lead-modal></div>
+      <section class="lead-modal__panel" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+        <button class="lead-modal__close" type="button" data-close-lead-modal aria-label="Close growth audit form">×</button>
+        <p class="eyebrow light">Private Growth Audit</p>
+        <h2 id="lead-modal-title">Tell Us About Your Clinic</h2>
+        <p>Share a few details and we’ll review where your acquisition, qualification, and booking process may be leaking consultations.</p>
+        <form class="lead-form" data-lead-form>
+          <div class="lead-form__grid">
+            <label>
+              <span>First Name</span>
+              <input name="firstName" type="text" autocomplete="given-name" required />
+            </label>
+            <label>
+              <span>Last Name</span>
+              <input name="lastName" type="text" autocomplete="family-name" required />
+            </label>
+          </div>
+          <div class="lead-form__grid">
+            <label>
+              <span>Email</span>
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <label>
+              <span>Phone Number</span>
+              <input name="phone" type="tel" autocomplete="tel" required />
+            </label>
+          </div>
+          <fieldset class="lead-form__fieldset">
+            <legend>Are you a Dental Practice Owner?</legend>
+            <div class="lead-form__radio-group">
+              <label class="lead-form__radio">
+                <input name="isPracticeOwner" type="radio" value="Yes" required />
+                <span>Yes</span>
+              </label>
+              <label class="lead-form__radio">
+                <input name="isPracticeOwner" type="radio" value="No" required />
+                <span>No</span>
+              </label>
+            </div>
+          </fieldset>
+          <label>
+            <span>Clinic Name</span>
+            <input name="clinicName" type="text" autocomplete="organization" required />
+          </label>
+          <label>
+            <span>Which best describes your monthly revenue?</span>
+            <select name="monthlyRevenue" required>
+              <option value="">Select a range</option>
+              <option value="Less than $100k">Less than 100k</option>
+              <option value="$100k - $200k">$100k - $200k</option>
+              <option value="$200k - $500k">$200k - $500k</option>
+              <option value="$500k+">$500k+</option>
+            </select>
+          </label>
+          <input name="pageUrl" type="hidden" />
+          <button class="button light-button lead-form__submit" type="submit">Book Call <span></span></button>
+          <p class="lead-form__status" data-lead-form-status role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </div>
 
     <script src="./script.js"></script>
   </body>
