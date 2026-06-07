@@ -28,17 +28,42 @@
     <link rel="stylesheet" href="./landing.css" />
   </head>
   <body class="lp-body">
+    <div class="announcement" data-announcement>
+      <a href="#landing-form">Book a private growth audit</a>
+    </div>
+
+    <header class="site-header" data-header>
+      <a class="brand brand-light" href="./index.html" aria-label="DAE home">
+        <img class="brand-logo" src="./assets/dae-logo-white.svg" alt="DAE" />
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#lp-system">Platform</a>
+        <a href="#lp-comparison">Use Cases</a>
+        <a href="#lp-system">Workflow</a>
+        <a href="#lp-guarantee">Results</a>
+        <a href="#lp-faq">FAQ</a>
+      </nav>
+      <a class="button ghost desktop-only" href="#landing-form">Book a call <span></span></a>
+      <button class="menu-button" type="button" aria-label="Open navigation" data-menu-button>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
+      <a href="#lp-system">Platform</a>
+      <a href="#lp-comparison">Use Cases</a>
+      <a href="#lp-system">Workflow</a>
+      <a href="#lp-guarantee">Results</a>
+      <a href="#lp-faq">FAQ</a>
+      <a href="#landing-form">Book a call</a>
+    </nav>
+
     <main>
       <section class="lp-hero">
         <div class="liquid-hero-background lp-liquid" aria-hidden="true">
           <canvas data-liquid-hero-canvas></canvas>
         </div>
-        <header class="lp-header">
-          <a class="brand" href="./index.html" aria-label="DAE home">
-            <img class="brand-logo" src="./assets/dae-logo-white.svg" alt="DAE" />
-          </a>
-          <a class="lp-header-link" href="#landing-form">Book a call</a>
-        </header>
 
         <div class="lp-hero-grid">
           <div class="lp-hero-copy">
@@ -198,7 +223,7 @@
         </div>
       </section>
 
-      <section class="lp-section lp-comparison">
+      <section class="lp-section lp-comparison" id="lp-comparison">
         <div>
           <p class="lp-eyebrow dark">Why DAE</p>
           <h2>Traditional Dental Marketing Stops Too Early.</h2>
@@ -229,7 +254,7 @@
         </div>
       </section>
 
-      <section class="lp-section lp-guarantee">
+      <section class="lp-section lp-guarantee" id="lp-guarantee">
         <div>
           <p class="lp-eyebrow">Performance Guarantee</p>
           <h2>If We Don’t Generate Qualified Implant Consultations, We Keep Working.</h2>
@@ -241,7 +266,7 @@
         <a class="lp-button lp-button-primary" href="#landing-form">Book a call</a>
       </section>
 
-      <section class="lp-section lp-faq">
+      <section class="lp-section lp-faq" id="lp-faq">
         <div class="lp-section-head">
           <p class="lp-eyebrow dark">FAQ</p>
           <h2>Questions Clinic Owners Ask Before Booking A Call</h2>
@@ -266,13 +291,52 @@
         </div>
       </section>
 
-      <section class="lp-final">
-        <p class="lp-eyebrow">Dental Appointment Engine</p>
-        <h2>Ready To Build A More Predictable Implant Consultation Pipeline?</h2>
-        <p>Book a private growth audit and we’ll map the gaps between your ad spend, qualified enquiries, follow-up, and booked consultations.</p>
-        <a class="lp-button lp-button-primary" href="#landing-form">Book a call</a>
-      </section>
     </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-cta">
+        <div class="pattern"></div>
+        <p class="eyebrow light">Dental Appointment Engine</p>
+        <h2>We Build And Manage A Complete Implant Acquisition System For Dental Clinics.</h2>
+        <p>From ad click to qualified enquiry, follow-up, appointment setting, and booked consultation — DAE connects every step into one patient acquisition system.</p>
+        <div class="action-row center">
+          <a class="button light-button" href="#landing-form">Book a call <span></span></a>
+          <a class="button ghost" href="#landing-form">Request Audit <span></span></a>
+        </div>
+        <p class="footer-guarantee">If we don’t generate qualified implant consultations within the agreed launch window, we continue working at no cost until we do.</p>
+      </div>
+      <div class="footer-main">
+        <div class="footer-brand-block">
+          <a class="brand brand-dark" href="./index.html" aria-label="DAE home">
+            <img class="brand-logo" src="./assets/dae-logo-white.svg" alt="DAE" />
+          </a>
+          <p>AI-powered patient acquisition, qualification, follow-up, and appointment booking for dental clinics.</p>
+          <p class="footer-trust">Built by performance marketers focused on high-intent patient acquisition systems.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#lp-system">Platform</a>
+          <a href="#lp-system">Workflow</a>
+          <a href="#lp-faq">FAQ</a>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <a href="#lp-system">Operating System</a>
+          <a href="#lp-system">Qualification Funnels</a>
+          <a href="#lp-system">Appointment Setter Workflows</a>
+          <a href="#lp-comparison">Revenue Attribution</a>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <a href="#landing-form">Contact</a>
+          <a href="#landing-form">Book a call</a>
+        </div>
+      </div>
+      <div class="legal">
+        <span>© 2026 DAE. All rights reserved.</span>
+        <span>Premium patient acquisition infrastructure for dental clinics.</span>
+      </div>
+    </footer>
 
     <script src="./script.js"></script>
   </body>

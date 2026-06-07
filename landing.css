@@ -6,7 +6,7 @@
   position: relative;
   isolation: isolate;
   min-height: 820px;
-  padding: 26px max(18px, calc((100vw - var(--hero-rail)) / 2)) 82px;
+  padding: 190px max(18px, calc((100vw - var(--hero-rail)) / 2)) 82px;
   overflow: hidden;
   color: var(--white);
   background:
@@ -17,37 +17,6 @@
 
 .lp-liquid {
   opacity: 0.7;
-}
-
-.lp-header {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: min(100%, var(--hero-rail));
-  margin: 0 auto 78px;
-  padding: 14px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.065);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.08), 0 22px 70px rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(18px);
-}
-
-.lp-header-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 20px;
-  border-radius: 12px;
-  background: var(--white);
-  color: #02020d;
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .lp-hero-grid {
@@ -431,26 +400,6 @@
   font-size: 15px;
 }
 
-.lp-final {
-  display: grid;
-  place-items: center;
-  gap: 22px;
-  padding: 112px 18px;
-  color: var(--white);
-  background:
-    radial-gradient(circle at 50% 10%, rgba(0, 103, 244, 0.2), transparent 42%),
-    linear-gradient(180deg, #050612 0%, #02020d 100%);
-  text-align: center;
-}
-
-.lp-final p:not(.lp-eyebrow) {
-  color: rgba(255, 255, 255, 0.68);
-}
-
-.lp-final .lp-button {
-  margin-top: 6px;
-}
-
 .lp-form .lead-form__submit {
   min-height: 56px;
 }
@@ -467,10 +416,6 @@
 @media (max-width: 1199px) {
   .lp-hero {
     padding-bottom: 66px;
-  }
-
-  .lp-header {
-    margin-bottom: 48px;
   }
 
   .lp-hero-grid,
@@ -492,28 +437,7 @@
 @media (max-width: 760px) {
   .lp-hero {
     min-height: auto;
-    padding: 18px 14px 54px;
-  }
-
-  .lp-header {
-    width: calc(100vw - 28px);
-    max-width: calc(100vw - 28px);
-    margin-bottom: 42px;
-    padding: 12px;
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  .lp-header .brand-logo {
-    width: 94px;
-  }
-
-  .lp-header-link {
-    min-height: 42px;
-    max-width: 94px;
-    padding: 0 10px;
-    font-size: 10px;
-    white-space: nowrap;
+    padding: 150px 14px 54px;
   }
 
   .lp-hero-grid {
@@ -537,8 +461,7 @@
   .lp-lead,
   .lp-section-head p:not(.lp-eyebrow),
   .lp-comparison p,
-  .lp-guarantee p,
-  .lp-final p {
+  .lp-guarantee p {
     max-width: 336px;
     font-size: 15.5px;
   }
@@ -590,8 +513,7 @@
 
   .lp-section-head h2,
   .lp-comparison h2,
-  .lp-guarantee h2,
-  .lp-final h2 {
+  .lp-guarantee h2 {
     font-size: clamp(32px, 10vw, 42px);
   }
 
@@ -624,9 +546,5 @@
     width: calc(100% - 28px);
     padding: 28px 20px;
     border-radius: 24px;
-  }
-
-  .lp-final {
-    padding: 82px 18px;
   }
 }
