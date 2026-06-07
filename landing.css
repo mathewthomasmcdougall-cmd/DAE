@@ -96,7 +96,7 @@
   margin-top: 10px;
 }
 
-.lp-proof-row span {
+.lp-proof-row > span {
   display: grid;
   gap: 6px;
   padding: 16px;
@@ -108,6 +108,14 @@
   font-weight: 700;
   text-transform: uppercase;
   backdrop-filter: blur(12px);
+}
+
+.lp-proof-row > span > span {
+  display: contents;
+}
+
+.lp-proof-row svg {
+  display: none;
 }
 
 .lp-proof-row strong {
@@ -427,11 +435,76 @@
     width: 100%;
   }
 
-  .lp-proof-row,
   .lp-pain-grid,
   .lp-system-grid,
   .lp-compare-card {
     grid-template-columns: 1fr;
+  }
+
+  .lp-proof-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 103, 244, 0.08);
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at 82% 12%, rgba(92, 247, 187, 0.12), transparent 40%),
+      linear-gradient(180deg, #f7fbff 0%, #eef6ff 100%);
+    box-shadow: 0 24px 70px rgba(2, 2, 13, 0.14);
+  }
+
+  .lp-proof-row > span {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    min-height: 94px;
+    padding: 18px 20px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: rgba(2, 2, 13, 0.74);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    text-transform: none;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .lp-proof-row > span + span {
+    border-top: 1px solid rgba(0, 103, 244, 0.08);
+  }
+
+  .lp-proof-row span span {
+    display: grid;
+    gap: 3px;
+  }
+
+  .lp-proof-row svg {
+    display: block;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    color: #131338;
+  }
+
+  .lp-proof-row svg path,
+  .lp-proof-row svg circle {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.2;
+  }
+
+  .lp-proof-row strong {
+    color: #02020d;
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
   }
 
   .lp-form-card {
