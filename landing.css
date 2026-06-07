@@ -360,6 +360,7 @@
 }
 
 .lp-form .lead-form__radio {
+  display: flex;
   align-items: center;
   min-height: 50px;
 }
