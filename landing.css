@@ -36,20 +36,6 @@
   padding-top: 18px;
 }
 
-.lp-eyebrow {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  line-height: 1.25;
-  text-transform: uppercase;
-}
-
-.lp-eyebrow.dark {
-  color: var(--blue);
-}
-
 .lp-hero h1 {
   max-width: 850px;
   color: var(--white);
@@ -199,17 +185,15 @@
 
 .lp-section-head h2,
 .lp-comparison h2,
-.lp-guarantee h2,
-.lp-final h2 {
+.lp-guarantee h2 {
   color: inherit;
   font-size: clamp(36px, 4.6vw, 62px);
   line-height: 0.98;
 }
 
-.lp-section-head p:not(.lp-eyebrow),
-.lp-comparison p,
-.lp-guarantee p,
-.lp-final p {
+.lp-section-head p:not(.eyebrow),
+.lp-comparison p:not(.eyebrow),
+.lp-guarantee p:not(.eyebrow) {
   max-width: 720px;
   color: rgba(2, 2, 13, 0.62);
   font-size: 18px;
@@ -266,7 +250,7 @@
     linear-gradient(135deg, #02020d 0%, #080936 52%, #02020d 100%);
 }
 
-.lp-section-head.light p:not(.lp-eyebrow) {
+.lp-section-head.light p:not(.eyebrow) {
   color: rgba(255, 255, 255, 0.66);
 }
 
@@ -367,37 +351,8 @@
   box-shadow: 0 34px 96px rgba(2, 2, 13, 0.22);
 }
 
-.lp-guarantee p {
+.lp-guarantee p:not(.eyebrow) {
   color: rgba(255, 255, 255, 0.68);
-}
-
-.lp-faq {
-  padding-top: 80px;
-}
-
-.lp-faq-list {
-  display: grid;
-  gap: 10px;
-  max-width: 920px;
-}
-
-.lp-faq-list details {
-  border: 1px solid rgba(2, 2, 13, 0.08);
-  border-radius: 18px;
-  background: #ffffff;
-  box-shadow: 0 18px 50px rgba(2, 2, 13, 0.055);
-}
-
-.lp-faq-list summary {
-  cursor: pointer;
-  padding: 20px 22px;
-  color: var(--ink);
-  font-weight: 850;
-}
-
-.lp-faq-list p {
-  padding: 0 22px 22px;
-  font-size: 15px;
 }
 
 .lp-form .lead-form__submit {
@@ -459,15 +414,11 @@
   }
 
   .lp-lead,
-  .lp-section-head p:not(.lp-eyebrow),
-  .lp-comparison p,
-  .lp-guarantee p {
+  .lp-section-head p:not(.eyebrow),
+  .lp-comparison p:not(.eyebrow),
+  .lp-guarantee p:not(.eyebrow) {
     max-width: 336px;
     font-size: 15.5px;
-  }
-
-  .lp-eyebrow {
-    max-width: calc(100vw - 42px);
   }
 
   .lp-hero-actions,
